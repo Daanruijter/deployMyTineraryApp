@@ -3,19 +3,18 @@
   "version": "1.0.0",
   "description": "backend for itinerary project",
   "main": "server.js",
-  "start": "nodemon server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"nodemon server.js\" \"cd ../client && npm start\""
-    
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.8.10"
+    "mongoose": "^5.8.10",
+    "nodemon": "^2.0.2"
   }
 }
-
-
