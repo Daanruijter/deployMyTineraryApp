@@ -4,7 +4,7 @@ const itinerarySchema = new mongoose.Schema({
     //5e4417af1c9d440000a62717//
 
     parentCity_id: {
-        type: ObjectID,
+        type: String,
         required: true
     },
     title: {
@@ -42,7 +42,7 @@ const itinerarySchema = new mongoose.Schema({
         required: true
     },
     rating: {
-        type: Integer,
+        type: String,
         required: true
     }
 
@@ -50,4 +50,4 @@ const itinerarySchema = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('Amsterdam', itinerarySchema)
+module.exports = mongoose.model('itinerary', itinerarySchema)

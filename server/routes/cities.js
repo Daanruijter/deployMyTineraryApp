@@ -1,11 +1,8 @@
 
-
-
 const express = require('express')
-
 const router = express.Router()
-
 const cityModel = require('../model/cityModel')
+
 
 
 router.get('/testing',function(req,res){
@@ -83,6 +80,20 @@ router.get('/test', (req, res) => {
 //         })
 //         .catch(err => console.log(err));
 // });
+
+
+// get Paris as a city
+
+router.get('/:Paris',
+(req, res) => {
+    
+      let cityRequested = req.params.Paris;
+      cityModel.findOne({ name: cityRequested })
+        .then(city => {
+            res.send(city)
+        })
+        .catch(err => console.log(err));
+});
 
 
 module.exports = router
