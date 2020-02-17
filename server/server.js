@@ -21,6 +21,8 @@ app.listen(port, () => {
   console.log("Server is running on " + port + "port");
 });
 
+
+//if you are on this path, require this file//
 app.use('/cities', require('./routes/cities'))
 app.use('/itineraries', require('./routes/itineraries'))
 
