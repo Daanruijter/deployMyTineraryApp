@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const userModel = require('../model/userModel')
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 
 // router.post('/test', (req, res) => {
     
@@ -19,13 +19,14 @@ const bcrypt = require('bcrypt')
 
 
 router.post('/', (req, res) => {
-    console.log(req)
+    console.log("sdsdsd", req.body)
     const {firstName, lastName, password, email, picture} = req.body
-   res.send('register')
+
 
    //simple validation//
 
-   if (!firstName || !lastName ||!password ||!email ||!picture){
+
+   if (!firstName || !lastName || !picture || !password ||!email  ){
        return res.status(400).json({msg: 'Please enter all fields'});
 
    }
@@ -33,36 +34,46 @@ router.post('/', (req, res) => {
    //check for existing user//
    userModel.findOne({email})
    .then(user =>    {
+       console.log(user + "useer")
        if(user) {
            return res.status(400).json({msg: 'user already exists'});
 
        }
-       const newUser = new User ({
-           firstName,
-           lastName,
-           email,
-           password,
-           image
+       console.log(firstName)
+       const newUser = new userModel ({
+           firstName: firstName,
+           lastName: lastName,
+           email: email,
+           password: password,  
+           picture: picture
        })
-
+       console.log(newUser)
+    //    res.send({firstName, lastName, password, email, picture})
+    //    .catch (err => console.log(err))
+ 
        //Create salt and hash//
        bcrypt.genSalt(10, (err, salt)=> {
            bcrypt.hash(newUser.password, salt, (err, hash) => {
                if(err) throw err;
                newUser.password = hash;
+               console.log(hash)
                newUser.save()
+               console.log("newUser" + newUser)
                .then(user => {
                    res.json({
                        user: {
                         // id:user.id,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                        password: user.password,
-                        image: user.image 
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        password: password,
+                        picture: picture 
                            
                        }
+                       
                    })
+                   
+                   
                })
            })
        })
