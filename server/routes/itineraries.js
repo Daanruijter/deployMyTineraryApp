@@ -6,7 +6,7 @@ const itineraryModel = require('../model/itineraryModel')
 
 router.get('/:city', (req, res) => {
     let city = req.params.city
-    
+  
 
     itineraryModel.find({ parentCity_id: city })
   

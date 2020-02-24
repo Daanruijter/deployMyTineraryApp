@@ -25,6 +25,7 @@ app.listen(port, () => {
 //if you are on this path, require this file//
 app.use('/cities', require('./routes/cities'))
 app.use('/itineraries', require('./routes/itineraries'))
+app.use('/Create-account', require('./routes/users'))
 
  mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, dbName: 'itinerary-app' })
      .then(() => console.log('Connection to Mongo DB established'))
