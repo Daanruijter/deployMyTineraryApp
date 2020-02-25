@@ -1,13 +1,17 @@
 
-
-const db = require('./keys').mongoURI;
+// const db = require('./keys').mongoURI;
 const mongoose = require('mongoose')
 const express = require("express");
+const config = require('config')
 const app = express();
 const port = process.env.PORT || 5000;
 
+
+
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
+const db = config.get('mongoURI')
 
 app.use(bodyParser.json());
 app.use(
