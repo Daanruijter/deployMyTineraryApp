@@ -6,7 +6,9 @@ console.log("akdhakdhjadkhd")
 
 //function sends along a token//
 function auth (req,res,next){
+
     const token = req.header('x-auth-token')
+    
 console.log("akdhakdhjadkhd")
     console.log(token)
     //check for token//

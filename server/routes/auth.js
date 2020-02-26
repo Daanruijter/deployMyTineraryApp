@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs");
 
 const config = require('config')
 const jwt = require('jsonwebtoken')
+const auth = require('./middleware/authMiddleware')
 
 
 
@@ -53,7 +54,6 @@ router.post('/', (req, res) => {
         
      
          email: email,
-         password: password,
           id:user.id,
        
             
@@ -74,5 +74,15 @@ router.post('/', (req, res) => {
         
 }); 
 
+router.get('/user', auth,(req,res) =>{
+    userModel.findById(req.user.id)
+    .select('-password')
+    .then(user => res.json(user))
+})
+
 module.exports = router
 
+//gives back a token//
+
+// "password": "sss",
+// "email": "Veses12s124s2s2s1ss54s@ns.com"

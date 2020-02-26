@@ -9,10 +9,14 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 
 
+console.log("line 12")
 
 
 router.post('/', (req, res) => {
-    console.log("sdsdsd", req.body)
+    console.log("line 15")
+    
+    console.log(req.header)
+    // console.log("sdsdsd", req.body)
     const {firstName, lastName, password, email, picture} = req.body
 
 
@@ -74,12 +78,10 @@ router.post('/', (req, res) => {
                    res.json({
                        token,
                     user: {
-                     // id:user.id,
+                     id:user.id,
                      firstName: firstName,
                      lastName: lastName,
-                     email: email,
-                     password: password,
-                     picture: picture 
+                     email: email,                     
                         
                     }
                
@@ -105,17 +107,5 @@ router.post('/', (req, res) => {
 
 module.exports = router
 
-// router.post('/test', (req, res) => {
-    
-//     // console.log(res +"SDSDSD")
+//gives back a new user//
 
-//     userModel.find({})
-  
-//         .then(files => {
-
-//             return res.send(files)
-//         })
-//         .catch(err => console.log(err));
-// }); 
-
-    //    res.send({firstName, lastName, password, email, picture})
