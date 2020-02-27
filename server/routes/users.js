@@ -13,7 +13,6 @@ router.post("/", (req, res) => {
   // console.log(req.header)
   // console.log("sdsdsd", req.body)
   const { firstName, lastName, password, email, picture } = req.body;
-  console.log("line 18");
   console.log(firstName);
 
   //simple validation//
@@ -72,7 +71,8 @@ router.post("/", (req, res) => {
                     id: user.id,
                     firstName: firstName,
                     lastName: lastName,
-                    email: email
+                    email: email,
+                    picture: picture
                   }
                 });
               }
