@@ -38,12 +38,12 @@ router.post("/", (req, res) => {
           lastName: user.lastName,
           picture: user.picture
         };
-        const options = { expiresIn: 2592000 };
+
         jwt.sign(
           payload,
 
           config.get("jwtSecret"),
-          { expiresIn: 3600 },
+          { expiresIn: 2592000 },
           (err, token) => {
             if (err) throw err;
 
