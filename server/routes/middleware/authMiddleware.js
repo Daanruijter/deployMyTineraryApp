@@ -6,12 +6,12 @@ console.log("akdhakdhjadkhd");
 
 //function sends along a token//
 function auth(req, res, next) {
-  const token = req.header("x-auth-token");
+  const token = req.headers["x-auth-token"];
 
   console.log("akdhakdhjadkhd");
   console.log(token);
   //check for token//
-  if (!token) {
+  if (token == undefined) {
     //401=you don't have the right permission: user is unauthorized//
     return res.status(401).json({ msg: "No token, authorization denied" });
   }
