@@ -8,6 +8,18 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 const auth = require("./middleware/authMiddleware");
 
+router.post("/test", (req, res) => {
+  console.log(req);
+  //   const { token } = req.body;
+  //   console.log(token);
+  //   userModel.findById({ token }).then(token => {
+  //     console.log(token);
+  //   });
+});
+
+//path for getting userID//
+// app.use("/currentuser", require("./routes/auth"));
+
 router.post("/", (req, res) => {
   console.log("req" + req.body);
 
