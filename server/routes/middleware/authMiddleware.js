@@ -8,7 +8,7 @@ function auth(req, res, next) {
   const token = req.headers["x-auth-token"];
 
   console.log("middelware logs token from line 12 (see below)");
-  console.log(token);
+  // console.log(token);
   //check for token//
   if (token == undefined) {
     //401=you don't have the right permission: user is unauthorized//
