@@ -1,6 +1,5 @@
 const config = require("config");
 const jwt = require("jsonwebtoken");
-console.log("akdhakdhjadkhd");
 
 //next brings you to the next middleware once you are done with what the middleware does//
 
@@ -8,7 +7,7 @@ console.log("akdhakdhjadkhd");
 function auth(req, res, next) {
   const token = req.headers["x-auth-token"];
 
-  console.log("akdhakdhjadkhd");
+  console.log("middelware logs token from line 12 (see below)");
   console.log(token);
   //check for token//
   if (token == undefined) {

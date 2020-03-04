@@ -11,38 +11,27 @@ const auth = require("./middleware/authMiddleware");
 // "5e54f3bcdc1ac8371c7eb5b9"
 
 //get the current user with the token
-router.post("/test", (req, res) => {
-  console.log(req);
-  //the id needs to come from req//
-  res.send({ testisworking: "sss" });
-  // test = req.body.test;
-  // res.send(test);
-  // userModel
-  //   .findById(test)
+// router.get("/currentuser", (req, res) => {
+//   console.log(req);
+//   //the id needs to come from req//
 
-  //   .then(user => {
-  //     //sends the user back to the api so that it can be fetched//
-  //     return res.send(user);
-  //   })
-  //   .catch(err => console.log(err));
-});
+//   // test = req.body.test;
+//   // res.send(test);
+//   // userModel
+//   //   .findById(test)
+
+//   //   .then(user => {
+//   //     //sends the user back to the api so that it can be fetched//
+//   //     return res.send(user);
+//   //   })
+//   //   .catch(err => console.log(err));
+// });
 
 //   const { token } = req.body;
 //   console.log(token);
 //   userModel.findById({ token }).then(token => {
 //     console.log(token);
 //   });
-
-router.get("/all", (req, res) => {
-  // console.log(res +"RESSSSSSSSSSSSSSSS")
-  cityModel
-    .find({})
-    .then(files => {
-      console.log(files);
-      return res.send(files);
-    })
-    .catch(err => console.log(err));
-});
 
 //path for getting userID//
 // app.use("/currentuser", require("./routes/auth"));
@@ -103,6 +92,8 @@ router.post("/", (req, res) => {
 });
 
 router.get("/user", auth, (req, res) => {
+  console.log(req);
+  console.log("req from line 107 in auth.js");
   userModel
     .findById(req.user.id)
     .select("-password")

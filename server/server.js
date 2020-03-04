@@ -28,7 +28,7 @@ app.use("/cities", require("./routes/cities"));
 app.use("/itineraries", require("./routes/itineraries"));
 app.use("/createaccount", require("./routes/users"));
 app.use("/login", require("./routes/auth"));
-app.use("/currentuser", require("./routes/auth"));
+app.use("/currentuser", require("./routes/currentuser"));
 
 mongoose
   .connect(db, {
