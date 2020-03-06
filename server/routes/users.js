@@ -7,6 +7,17 @@ const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 
+router.post("/api", (req, res) => {
+  let currentUser = req.body.currentUserId;
+  userModel
+    .findById(currentUser)
+
+    .then(user => {
+      console.log(user);
+    })
+    .catch(err => console.log(err));
+});
+
 router.post("/", (req, res) => {
   // console.log("line 15")
 

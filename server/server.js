@@ -27,6 +27,7 @@ app.listen(port, () => {
 app.use("/cities", require("./routes/cities"));
 app.use("/itineraries", require("./routes/itineraries"));
 app.use("/createaccount", require("./routes/users"));
+app.use("/favourites", require("./routes/users"));
 app.use("/login", require("./routes/auth"));
 app.use("/currentuser", require("./routes/currentuser"));
 

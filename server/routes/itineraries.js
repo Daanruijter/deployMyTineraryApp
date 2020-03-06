@@ -1,26 +1,22 @@
+const express = require("express");
+const router = express.Router();
+const itineraryModel = require("../model/itineraryModel");
 
-const express = require('express')
-const router = express.Router()
-const itineraryModel = require('../model/itineraryModel')
+router.get("/:city", (req, res) => {
+  let city = req.params.city;
 
+  itineraryModel
+    .find({ parentCity_id: city })
 
-router.get('/:city', (req, res) => {
-    let city = req.params.city
-  
-
-    itineraryModel.find({ parentCity_id: city })
-  
-        .then(files => {
-         
-            return res.send(files)
-        })
-        .catch(err => console.log(err));
+    .then(files => {
+      return res.send(files);
+    })
+    .catch(err => console.log(err));
 });
 
+module.exports = router;
 
-module.exports = router
-
-//Amsterdam 
+//Amsterdam
 // 5e4521041c9d4400003cc9eb
 
 // Valencia
