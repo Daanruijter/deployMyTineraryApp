@@ -6,17 +6,60 @@ const bcrypt = require("bcryptjs");
 
 const config = require("config");
 const jwt = require("jsonwebtoken");
+let favouritesArray = [];
 
-router.post("/api", (req, res) => {
-  let currentUser = req.body.currentUserId;
-  userModel
-    .findById(currentUser)
+router.post("/:idOfCurrentUser", (req, res) => {
+  console.log(req.params);
+  let currentUserId = req.params.idOfCurrentUser;
 
-    .then(user => {
-      console.log(user);
-    })
-    .catch(err => console.log(err));
+  userModel.findById(currentUserId, (err, doc) => {
+    favouritesArray = doc.favourites;
+    console.log("test" + favouritesArray + "test");
+
+    console.log("from line 17");
+  });
+
+  favouritesArray.push(req.body);
+  console.log("line 23");
+  console.log("test2" + favouritesArray + "test2");
+
+  if (req.body.isAuthenticated === false) {
+    favouritesArray = [];
+  }
+
+  //   (userModel.findById(currentUserId))
+  //   .then(files => {
+  //     console.log(files)
+  //     return res.send(files)
+  // })
+
+  userModel.findOneAndUpdate(
+    { _id: currentUserId },
+    { favourites: favouritesArray },
+    (err, doc) => {
+      // console.log(doc);
+      console.log("from line 39");
+    }
+  );
 });
+//   userModel
+//     .findById(currentUser)
+
+//     .then(user => {
+//       console.log(user.favourites);
+//       let favouritesArray = [];
+//       favouritesArray.push(user.favourites);
+
+//       const updateUser = new userModel({
+//         favourites: favouritesArray
+//       });
+//       userModel.update(
+//         { _id: currentUser },
+//         { $set: { favourites: favouritesArray } }
+//       );
+//     })
+//     .catch(err => console.log(err));
+// });
 
 router.post("/", (req, res) => {
   // console.log("line 15")
@@ -24,7 +67,7 @@ router.post("/", (req, res) => {
   // console.log(req.header)
   // console.log("sdsdsd", req.body)
   const { firstName, lastName, password, email, picture } = req.body;
-  console.log(firstName);
+  // console.log(firstName);
 
   //simple validation//
 
