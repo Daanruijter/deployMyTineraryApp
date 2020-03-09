@@ -9,38 +9,35 @@ const jwt = require("jsonwebtoken");
 let favouritesArray = [];
 
 router.post("/:idOfCurrentUser", (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   let currentUserId = req.params.idOfCurrentUser;
 
-  userModel.findById(currentUserId, (err, doc) => {
-    favouritesArray = doc.favourites;
-    console.log("test" + favouritesArray + "test");
+  console.log(currentUserId);
+  // userModel.findById(currentUserId, (err, doc) => {
+  //   favouritesArray = doc.favourites;
+  //   console.log(favouritesArray);
+  //   console.log("doc.favourites");
+  //   // console.log("test" + favouritesArray + "test");
 
-    console.log("from line 17");
-  });
+  //   // console.log("from line 17");
+  // });
 
-  favouritesArray.push(req.body);
-  console.log("line 23");
-  console.log("test2" + favouritesArray + "test2");
-
-  if (req.body.isAuthenticated === false) {
-    favouritesArray = [];
-  }
-
-  //   (userModel.findById(currentUserId))
-  //   .then(files => {
-  //     console.log(files)
-  //     return res.send(files)
-  // })
+  // favouritesArray.push();
+  // console.log("line 23");
+  // console.log("test2" + favouritesArray + "test2");
 
   userModel.findOneAndUpdate(
     { _id: currentUserId },
-    { favourites: favouritesArray },
+    { $push: { favourites: req.body } },
     (err, doc) => {
-      // console.log(doc);
+      console.log(doc);
+      res.send({ doc });
       console.log("from line 39");
     }
   );
+  // if (req.body.isAuthenticated === false) {
+  //   favouritesArray = [];
+  // }
 });
 //   userModel
 //     .findById(currentUser)
