@@ -8,6 +8,11 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 let favouritesArray = [];
 
+router.delete("/delete/:idOfCurrentUser", (req, res) => {
+  console.log(res);
+  // console.log("hi");
+});
+
 router.post("/:idOfCurrentUser", (req, res) => {
   // console.log(req.params);
   let currentUserId = req.params.idOfCurrentUser;
