@@ -64,7 +64,8 @@ router.post("/", (req, res) => {
           id: user.id,
           firstName: user.firstName,
           lastName: user.lastName,
-          picture: user.picture
+          picture: user.picture,
+          favourites: user.favourites
         };
 
         jwt.sign(
@@ -82,7 +83,8 @@ router.post("/", (req, res) => {
                 lastName: payload.lastName,
                 email: email,
                 picture: payload.picture,
-                id: payload.id
+                id: payload.id,
+                favourites: payload.favourites
               }
             });
           }

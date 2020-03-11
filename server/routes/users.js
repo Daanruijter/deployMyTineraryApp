@@ -52,7 +52,7 @@ router.post("/:idOfCurrentUser", (req, res) => {
 
   userModel.findOneAndUpdate(
     { _id: currentUserId },
-    { $push: { favourites: itineraryId } },
+    { $addToSet: { favourites: itineraryId } },
     (err, doc) => {
       // console.log(doc);
       res.send({ doc });
