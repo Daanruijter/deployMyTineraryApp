@@ -95,7 +95,7 @@ router.post("/", (req, res) => {
 
 router.get("/user", auth, (req, res) => {
   // console.log(req);
-  console.log("req from line 107 in auth.js");
+  // console.log("req from line 107 in auth.js");
   userModel
     .findById(req.user.id)
     .select("-password")

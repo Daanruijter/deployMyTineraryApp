@@ -11,15 +11,15 @@ const auth = require("./middleware/authMiddleware");
 //get the current user with the token
 
 router.post("/", auth, (req, res) => {
-  console.log(req.user.id);
-  console.log("currentuser line 15");
+  // console.log(req.user.id);
+  // console.log("currentuser line 15");
   const user = req.user;
-  console.log(user);
+  // console.log(user);
   userModel
     .findById(user.id)
 
     .then(user => {
-      console.log(user);
+      // console.log(user);
       return res.send(user);
     });
 });

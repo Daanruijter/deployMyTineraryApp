@@ -31,8 +31,19 @@ app.use("/favourites", require("./routes/users"));
 app.use("/login", require("./routes/auth"));
 app.use("/currentuser", require("./routes/currentuser"));
 
+// const serverOptions = {
+//   poolSize: 100,
+//   socketOptions: {
+//     socketTimeoutMS: 6000000
+//   }
+// };
+
 mongoose
   .connect(db, {
+    // server: { sockedOptions: { connectTimeoutMS: 5000 } },
+
+    socketTimeoutMS: 6000000,
+
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
