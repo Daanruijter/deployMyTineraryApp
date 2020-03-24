@@ -1,12 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const userModel = require("../model/userModel");
+const cityModel = require("../model/cityModel");
 const itineraryModel = require("../model/itineraryModel");
 
 const bcrypt = require("bcryptjs");
 
 const config = require("config");
 const jwt = require("jsonwebtoken");
+
+router.get("/getCityName/:cityName", (req, res) => {
+  let cityName = req.params.cityName;
+  cityModel.findOne({ name: cityName }).then(result => {
+    console.log(result, "result");
+    res.send(result);
+  });
+});
 
 router.get("/getFavouritesPage/:idOfCurrentUser", (req, res) => {
   let idOfCurrentUser = req.params.idOfCurrentUser;
@@ -16,17 +25,17 @@ router.get("/getFavouritesPage/:idOfCurrentUser", (req, res) => {
       return result;
     })
     .then(result => {
-      console.log(result);
-      console.log("result, line 34");
+      // console.log(result);
+      // console.log("result, line 34");
       let ids = result.favourites.map(function(arr) {
-        console.log(arr);
-        console.log("arr");
+        // console.log(arr);
+        // console.log("arr");
         return arr;
       });
       itineraryModel.find({ _id: { $in: ids } }).then(result => {
         res.send(result);
-        console.log(result);
-        console.log("result, line 34");
+        // console.log(result);
+        // console.log("result, line 34");
       });
     })
     .catch(error => {
