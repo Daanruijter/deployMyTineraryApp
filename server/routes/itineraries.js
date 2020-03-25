@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const itineraryModel = require("../model/itineraryModel");
 
-router.put("/putitinerariestocount/:currentItinerary", (req, res) => {
+router.put("/increaseitinerariestocount/:currentItinerary", (req, res) => {
   let currentItinerary = req.params.currentItinerary;
   console.log(currentItinerary);
 
@@ -11,7 +11,27 @@ router.put("/putitinerariestocount/:currentItinerary", (req, res) => {
       { _id: currentItinerary },
       {
         $inc: {
-          rating: 1
+          rating: +1
+        }
+      }
+    )
+
+    .then(files => {
+      return res.send(files);
+    })
+    .catch(err => console.log(err));
+});
+
+router.put("/decreaseitinerariestocount/:currentItinerary", (req, res) => {
+  let currentItinerary = req.params.currentItinerary;
+  console.log(currentItinerary);
+
+  itineraryModel
+    .findOneAndUpdate(
+      { _id: currentItinerary },
+      {
+        $inc: {
+          rating: -1
         }
       }
     )
