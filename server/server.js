@@ -30,6 +30,7 @@ app.use("/createaccount", require("./routes/users"));
 app.use("/favourites", require("./routes/users"));
 app.use("/login", require("./routes/auth"));
 app.use("/currentuser", require("./routes/currentuser"));
+app.use("/comments", require("./routes/comments"));
 
 // const serverOptions = {
 //   poolSize: 100,
