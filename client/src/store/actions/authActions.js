@@ -25,7 +25,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("http://localhost:5000/login/user", tokenConfig(getState))
+    .get("https://localhost:5000/login/user", tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -66,7 +66,7 @@ export const register = ({
   });
 
   axios
-    .post("http://localhost:5000/createaccount", body, config)
+    .post("https://localhost:5000/createaccount", body, config)
 
     .then(res => {
       dispatch({
@@ -132,7 +132,7 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
   });
 
   axios
-    .post("http://localhost:5000/login", body, config)
+    .post("https://localhost:5000/login", body, config)
 
     .then(res => {
       dispatch({
@@ -175,7 +175,7 @@ export const fetchCurrentUser = () => {
   return dispatch => {
     dispatch(fetchCurrentUserRequest());
 
-    return fetch("http://localhost:5000/currentuser", {
+    return fetch("https://localhost:5000/currentuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -213,7 +213,7 @@ export const sendUserToken = () => dispatch => {
   // console.log(body);
 
   axios
-    .post("http://localhost:5000/currentuser", {}, { headers })
+    .post("https://localhost:5000/currentuser", {}, { headers })
     .then(res => {
       // console.log("line 220");
       dispatch({
