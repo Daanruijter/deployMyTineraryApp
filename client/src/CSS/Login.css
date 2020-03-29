@@ -1,0 +1,35 @@
+.user-loginform {
+    background-color: burlywood;
+
+}
+
+.user-loginform label {
+    display: inline-block;
+    width: 100%;
+
+
+    text-align: center;
+}
+
+
+.submitbutton {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    ;
+}
+
+.close-login-field {
+    font-size: 150%;
+    color: red;
+    padding: 5%;
+}
+
+.login-alert {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 170%;
+    padding-bottom: 7%;
+    padding-top: 5%;
+}

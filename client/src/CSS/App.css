@@ -1,0 +1,28 @@
+
+
+.App {
+  height:100%;
+  display:grid; 
+grid-template-rows: 6% 94%;
+
+}
+
+ .hamburger-grid {
+
+grid-row-start: 0;
+grid-row-start: 1;
+  
+} 
+
+
+.main-content {
+  grid-row-start: 1;
+grid-row-start: 2;
+height:100vh;
+}
+
+nav {
+  background-color:red !important;
+}
+
+

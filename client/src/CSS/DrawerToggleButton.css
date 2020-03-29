@@ -1,0 +1,27 @@
+.button-hamburger-menu-icon {
+
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.button-hamburger-menu-header {
+    width: 100%;
+    background-color: red;
+}
+
+a {
+    color: white;
+}
+
+.toggle-button {
+    height: 100%;
+    /* width: 15%; */
+    background: transparent;
+    border: none;
+}
+
+.toggle-button:focus {
+    outline: none;
+}

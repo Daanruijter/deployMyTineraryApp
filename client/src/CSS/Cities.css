@@ -1,0 +1,81 @@
+
+
+
+
+
+.city-container {
+  display:grid;
+  height:100vh; 
+  grid-template-rows: 8% 77% 15%;
+}
+
+
+
+.city-inputfield-container {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.citycards-container {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  overflow:scroll;
+}
+
+.homeicon-container {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  
+}
+
+.home-flexer {
+  display:flex;
+  justify-content: center;
+  margin-top:8%;
+ 
+} 
+
+
+.no-cities-box  {
+  display:grid;
+  height:100vh;
+  grid-template-rows: 7% 78% 15%;
+  background-color: red;
+  height:100vh;
+  
+  font-weight: bold;
+  color:white;
+
+
+
+}
+
+.city-inputfield-container {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+
+.no-cities {
+  text-align: center;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size:250%;
+  padding-top:35%;
+}
+
+.homeicon-container-no-cities {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: white;
+
+}
+
+
+.home-flexer-no-cities {
+  display:flex;
+  justify-content: center;
+  background-color: white;
+  margin-top:8%;
+
+}

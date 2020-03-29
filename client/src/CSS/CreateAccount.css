@@ -1,0 +1,50 @@
+.user-registration-form {
+    padding: 2%;
+    /* background-color:red; */
+
+}
+
+
+
+.user-registration-form {
+    background-color: burlywood;
+
+}
+
+.user-registration-form label {
+    display: inline-block;
+    width: 100%;
+
+
+    text-align: center;
+}
+
+
+.registration_submitbutton {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    ;
+}
+
+.register-alert {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 170%;
+    padding-bottom: 7%;
+    padding-top: 5%;
+}
+
+.close-register-field {
+    font-size: 150%;
+    color: red;
+    padding: 5%;
+}
+
+.submitbutton {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    ;
+}

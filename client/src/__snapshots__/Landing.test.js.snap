@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`landing component snapshot with Enzyme 1`] = `
+<div>
+  <img
+    alt="MYtineraryLogo"
+    className="MYtineraryLogo"
+    src="MYtineraryLogo.png"
+  />
+  <p>
+    Find your perfect trip, designed by insiders who know and love their cities. 
+  </p>
+  <h1
+    className="start-browsing-header"
+  >
+    Start browsing
+  </h1>
+  <div
+    className="start-browsing-flexer"
+  >
+    <img
+      alt="startBrowsing"
+      className="startBrowsing"
+      src="startBrowsing.png"
+    />
+  </div>
+  <p>
+    Want to build your own MYtinerary?
+  </p>
+  <div
+    className="UI-flexer"
+  >
+    <div
+      className="login-box"
+    >
+      <a
+        href=""
+      >
+        Log in
+      </a>
+    </div>
+    <div
+      className="login-box"
+    >
+      <a
+        href=""
+      >
+        Create Account
+      </a>
+    </div>
+  </div>
+  ssss
+  <div
+    className="home-flexer"
+  >
+    <img
+      alt="homeIcon"
+      className="homeIcon"
+      src="homeIcon.png"
+    />
+  </div>
+</div>
+`;

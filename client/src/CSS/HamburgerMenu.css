@@ -1,0 +1,108 @@
+.hamburger-menu-icon {
+
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+
+
+
+.hamburger-menu-header {
+
+
+  background-color: darkred;
+
+  width: 100%;
+
+  position: fixed;
+  z-index: 99;
+
+
+
+}
+
+.hamburger-grid-loggedin {
+  display: grid;
+  grid-template-columns: 16% 34% 50%;
+}
+
+.hamburger-grid {
+  display: grid;
+  grid-template-columns: 16% 34% 50%;
+}
+
+
+.register-login-container {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: flex;
+}
+
+.welcome-user {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+}
+
+.register-login-container-loggedin {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+}
+
+.hamburger-register {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  font-size: 120%;
+  padding: 5%;
+
+}
+
+.hamburger-login {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  font-size: 120%;
+  padding: 5%;
+
+
+}
+
+.hamburger-welcome-user {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  font-size: 120%;
+  padding: 5%;
+}
+
+.hamburger-logout {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  font-size: 120%;
+  padding: 10%;
+
+}
+
+.hamburger-icon-flexer {
+  display: flex;
+  justify-content: flex-end;
+  grid-column-start: 3;
+  grid-column-end: 4;
+
+}
+
+
+.hamburger-menu-navigation {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  color: white;
+}
+
+.hamburger-registerloginlogout {
+  display: flex;
+
+  justify-content: flex-start;
+}

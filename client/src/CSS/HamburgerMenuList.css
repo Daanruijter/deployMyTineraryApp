@@ -1,0 +1,96 @@
+.hamburger-menu-list-open {
+    height: 92%;
+    background: red;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+    padding-top: 10%;
+    /* width: 100%; */
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+
+    z-index: 200;
+    color: red;
+    transform: translateX((-100%));
+    transition: 0.3s ease-out;
+
+}
+
+.hamburger-menu-list-open a {
+    font-size: 200%;
+
+    text-decoration: none;
+    color: white;
+    list-style: none;
+    font-weight: bold;
+    /* text-align: center; */
+}
+
+/* .hamburger-menu-list a {
+    color: red;
+    list-style: none;
+} */
+
+
+/* .hamburger-menu-list ul {
+    list-style-type: none;
+    height: 100%;
+} */
+
+/* .hamburger-menu-list ul {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.hamburger-menu-list-open a:hover {
+    color: blue;
+}
+
+
+.hamburger-menu-list-open a:active {
+    color: #fa923f;
+}
+
+.hamburger-menu-list-open {
+    transform: translateX((0));
+}
+
+
+.hamburger-menu-list-open li {
+    list-style-type: none;
+    margin-top: 20%;
+
+}
+
+/* .dont-show-hamburger-menu-list {
+    display: none;
+} */
+
+/* .hamburger-menu-list-open ul li {
+    display: flex;
+} */
+
+/* 
+.hamburger-menu-list-container ul {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+
+} */
+
+/* .hamburger-menu-list-container ul div {
+    display: flex;
+    margin: 10%;
+    width: 100%;
+
+
+} */
+
+/* .create-account {
+    width: 1
+} */

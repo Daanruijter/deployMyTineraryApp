@@ -1,0 +1,38 @@
+
+.landing-page  {
+  
+    height: 93%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    height: 25%;
+    width: 100%;
+  }
+  
+  .start-browsing-flexer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .startBrowsing
+  {
+    width:25%;
+    
+  }
+  
+  .home-flexer {
+    height: 15%;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .homeIcon {
+    width: 10%;
+  }
+  
