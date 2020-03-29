@@ -12,6 +12,18 @@ const cors = require("cors");
 
 const db = config.get("mongoURI");
 
+//added to make the app work on Heroku
+// ... other imports
+const path = require("path");
+
+// ... other app.use middleware
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+// ...
+
+// app.listen(...)
+//added to make the app work on Heroku
+
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -19,6 +31,13 @@ app.use(
   })
 );
 app.use(cors());
+
+//added to make the app work on Heroku
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+//added to make the app work on Heroku
 
 app.listen(port, () => {
   console.log("Server is running on " + port + "port");
