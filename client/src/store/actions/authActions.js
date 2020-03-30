@@ -26,7 +26,7 @@ export const loadUser = () => (dispatch, getState) => {
 
   axios
     .get(
-      "https://mytinerayapplication.herokuapp.com/login/user",
+      "https://myitinerariestravelapp.herokuapp.com/login/user",
       tokenConfig(getState)
     )
     .then(res =>
@@ -70,7 +70,7 @@ export const register = ({
 
   axios
     .post(
-      "https://mytinerayapplication.herokuapp.com/createaccount",
+      "https://myitinerariestravelapp.herokuapp.com/createaccount",
       body,
       config
     )
@@ -139,7 +139,7 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
   });
 
   axios
-    .post("https://mytinerayapplication.herokuapp.com/login", body, config)
+    .post("https://myitinerariestravelapp.herokuapp.com/login", body, config)
 
     .then(res => {
       dispatch({
@@ -182,7 +182,7 @@ export const fetchCurrentUser = () => {
   return dispatch => {
     dispatch(fetchCurrentUserRequest());
 
-    return fetch("https://mytinerayapplication.herokuapp.com/currentuser", {
+    return fetch("https://myitinerariestravelapp.herokuapp.com/currentuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -221,7 +221,7 @@ export const sendUserToken = () => dispatch => {
 
   axios
     .post(
-      "https://mytinerayapplication.herokuapp.com/currentuser",
+      "https://myitinerariestravelapp.herokuapp.com/currentuser",
       {},
       { headers }
     )

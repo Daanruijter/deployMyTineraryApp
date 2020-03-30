@@ -37,11 +37,11 @@ export const postFavourites = favouriteData => dispatch => {
   // console.log(body);
 
   // to={`/itinerary/${props.id}/${props.cityname}`}
-  // .post(`{https://mytinerayapplication.herokuapp.com/favourites/${currentUserId}`, body, {
+  // .post(`{https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`, body, {
 
   axios
     .post(
-      `https://mytinerayapplication.herokuapp.com/favourites/${currentUserId}`,
+      `https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`,
       body,
       {
         headers
@@ -83,11 +83,11 @@ export const deleteFavourites = favouriteData => dispatch => {
   let body = "test";
 
   // to={`/itinerary/${props.id}/${props.cityname}`}
-  // .post(`{https://mytinerayapplication.herokuapp.com/favourites/${currentUserId}`, body, {
+  // .post(`{https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`, body, {
 
   axios
     .delete(
-      `https://mytinerayapplication.herokuapp.com/favourites/delete/${currentUserId}/${itineraryId}`,
+      `https://myitinerariestravelapp.herokuapp.com/favourites/delete/${currentUserId}/${itineraryId}`,
       body,
       {
         headers
@@ -152,7 +152,7 @@ export const fetchFavourites = currentUserIdToFetch => {
     dispatch(fetchFavouritesRequest());
 
     return fetch(
-      `https://mytinerayapplication.herokuapp.com/favourites/getfavourites/${currentUserId}`,
+      `https://myitinerariestravelapp.herokuapp.com/favourites/getfavourites/${currentUserId}`,
       {
         method: "GET",
         headers: {
@@ -217,7 +217,7 @@ export const fetchFavouritesPage = favouritesArray => {
     dispatch(fetchFavouritesPageRequest());
 
     return fetch(
-      `https://mytinerayapplication.herokuapp.com/favourites/getFavouritesPage/${currentUserId}`,
+      `https://myitinerariestravelapp.herokuapp.com/favourites/getFavouritesPage/${currentUserId}`,
 
       {
         method: "GET",

@@ -70,6 +70,8 @@ mongoose
   .then(() => console.log("Connection to Mongo DB established"))
   .catch(err => console.log(err + "There is no connection"));
 
+mongoose.set("debug", true);
+
 //Step3//
 
 // app.use(express.static(__dirname)); //here is important thing - no static directory, because all static :)

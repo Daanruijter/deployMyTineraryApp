@@ -21,7 +21,7 @@ class Comment extends Component {
     };
     axios
       .post(
-        "https://mytinerayapplication.herokuapp.com/comments/saveComment",
+        "https://myitinerariestravelapp.herokuapp.com/comments/saveComment",
         variables
       )
       .then(response => {
