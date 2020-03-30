@@ -48,7 +48,10 @@ app.listen(port, () => {
 
 //if you are on this path, require this file//
 //this creates API routes//
-app.use("/cities", require("./routes/cities"));
+app.use(
+  "https://mytinerayapplication.herokuapp.com/cities",
+  require("./routes/cities")
+);
 app.use("/itineraries", require("./routes/itineraries"));
 app.use("/createaccount", require("./routes/users"));
 app.use("/favourites", require("./routes/users"));
