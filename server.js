@@ -35,6 +35,43 @@ app.use(
 );
 app.use(cors());
 
+app.listen(port, () => {
+  console.log("Server is running on " + port + "port");
+});
+
+//if you are on this path, require this file//
+//this creates API routes//
+app.use("/cities", require("./routes/cities"));
+app.use("/itineraries", require("./routes/itineraries"));
+app.use("/createaccount", require("./routes/users"));
+app.use("/favourites", require("./routes/users"));
+app.use("/login", require("./routes/auth"));
+app.use("/currentuser", require("./routes/currentuser"));
+app.use("/comments", require("./routes/comments"));
+
+//Serve static assets if we are in production
+if (process.env.NODE_ENV === "production") {
+  //Set static folder
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
+mongoose
+  .connect(db, {
+    socketTimeoutMS: 6000000,
+
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    dbName: "itinerary-app"
+  })
+  .then(() => console.log("Connection to Mongo DB established"))
+  .catch(err => console.log(err + "There is no connection"));
+
+//Step3//
+
 // app.use(express.static(__dirname)); //here is important thing - no static directory, because all static :)
 
 // app.get("/*", function(req, res) {
@@ -70,20 +107,6 @@ app.use(cors());
 //   res.sendFile(__dirname + "/public/index.html");
 // });
 
-app.listen(port, () => {
-  console.log("Server is running on " + port + "port");
-});
-
-//if you are on this path, require this file//
-//this creates API routes//
-app.use("/cities", require("./routes/cities"));
-app.use("/itineraries", require("./routes/itineraries"));
-app.use("/createaccount", require("./routes/users"));
-app.use("/favourites", require("./routes/users"));
-app.use("/login", require("./routes/auth"));
-app.use("/currentuser", require("./routes/currentuser"));
-app.use("/comments", require("./routes/comments"));
-
 // app.get("/*", function(req, res) {
 //   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 // });
@@ -94,21 +117,3 @@ app.use("/comments", require("./routes/comments"));
 //     socketTimeoutMS: 6000000
 //   }
 // };
-
-mongoose
-  .connect(process.env.MONGODB_URI || db, {
-    socketTimeoutMS: 6000000,
-
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    dbName: "itinerary-app"
-  })
-  .then(() => console.log("Connection to Mongo DB established"))
-  .catch(err => console.log(err + "There is no connection"));
-
-//Step3//
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
