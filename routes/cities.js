@@ -9,6 +9,7 @@ const cityModel = require("../model/cityModel");
 
 /*get all cities*/
 router.get("/all", (req, res) => {
+  console.log("cities fetch function gets called");
   // console.log(res +"RESSSSSSSSSSSSSSSS")
   cityModel
     .find({})
