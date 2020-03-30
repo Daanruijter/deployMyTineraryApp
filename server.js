@@ -59,7 +59,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 mongoose
-  .connect(db, {
+  .connect(process.env.MONGODB_URI || db, {
     socketTimeoutMS: 6000000,
 
     useUnifiedTopology: true,
