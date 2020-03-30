@@ -31,6 +31,7 @@ export const fetchCitiesFailure = error => {
 export const fetchCities = () => {
   return dispatch => {
     dispatch(fetchCitiesRequest());
+    console.log("cityrequest");
 
     return fetch("https://mytinerayapplication.herokuapp.com/cities/all", {
       method: "GET",
