@@ -220,11 +220,7 @@ export const sendUserToken = () => dispatch => {
   // console.log(body);
 
   axios
-    .post(
-      "https://myitinerariestravelapp.herokuapp.com/currentuser",
-      {},
-      { headers }
-    )
+    .post("/currentuser", {}, { headers })
     .then(res => {
       // console.log("line 220");
       dispatch({

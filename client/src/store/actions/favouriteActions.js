@@ -37,16 +37,12 @@ export const postFavourites = favouriteData => dispatch => {
   // console.log(body);
 
   // to={`/itinerary/${props.id}/${props.cityname}`}
-  // .post(`{https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`, body, {
+  // .post(`{favourites/${currentUserId}`, body, {
 
   axios
-    .post(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`,
-      body,
-      {
-        headers
-      }
-    )
+    .post(`favourites/${currentUserId}`, body, {
+      headers
+    })
     .then(res => {
       // console.log("line 23");
       dispatch({
@@ -83,16 +79,12 @@ export const deleteFavourites = favouriteData => dispatch => {
   let body = "test";
 
   // to={`/itinerary/${props.id}/${props.cityname}`}
-  // .post(`{https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`, body, {
+  // .post(`{favourites/${currentUserId}`, body, {
 
   axios
-    .delete(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/delete/${currentUserId}/${itineraryId}`,
-      body,
-      {
-        headers
-      }
-    )
+    .delete(`favourites/delete/${currentUserId}/${itineraryId}`, body, {
+      headers
+    })
 
     .then(res => {
       // console.log("line 23");
@@ -151,15 +143,12 @@ export const fetchFavourites = currentUserIdToFetch => {
   return dispatch => {
     dispatch(fetchFavouritesRequest());
 
-    return fetch(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/getfavourites/${currentUserId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
+    return fetch(`favourites/getfavourites/${currentUserId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
       }
-    )
+    })
       .then(response => {
         return response.json();
       })
@@ -217,7 +206,7 @@ export const fetchFavouritesPage = favouritesArray => {
     dispatch(fetchFavouritesPageRequest());
 
     return fetch(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/getFavouritesPage/${currentUserId}`,
+      `favourites/getFavouritesPage/${currentUserId}`,
 
       {
         method: "GET",
