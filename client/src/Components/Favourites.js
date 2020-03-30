@@ -272,7 +272,7 @@ class Favourites extends Component {
 
     let cityName = this.props.match.params.cityName;
     fetch(
-      `http://localhost:5000/favourites/getCityName/${cityName}`,
+      `https://mytinerayapplication.herokuapp.com/favourites/getCityName/${cityName}`,
 
       {
         method: "GET",

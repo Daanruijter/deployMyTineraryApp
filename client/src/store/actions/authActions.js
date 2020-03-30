@@ -25,7 +25,10 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("https://localhost:5000/login/user", tokenConfig(getState))
+    .get(
+      "https://mytinerayapplication.herokuapp.com/login/user",
+      tokenConfig(getState)
+    )
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -66,7 +69,11 @@ export const register = ({
   });
 
   axios
-    .post("https://localhost:5000/createaccount", body, config)
+    .post(
+      "https://mytinerayapplication.herokuapp.com/createaccount",
+      body,
+      config
+    )
 
     .then(res => {
       dispatch({
@@ -132,7 +139,7 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
   });
 
   axios
-    .post("https://localhost:5000/login", body, config)
+    .post("https://mytinerayapplication.herokuapp.com/login", body, config)
 
     .then(res => {
       dispatch({
@@ -175,7 +182,7 @@ export const fetchCurrentUser = () => {
   return dispatch => {
     dispatch(fetchCurrentUserRequest());
 
-    return fetch("https://localhost:5000/currentuser", {
+    return fetch("https://mytinerayapplication.herokuapp.com/currentuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -213,7 +220,11 @@ export const sendUserToken = () => dispatch => {
   // console.log(body);
 
   axios
-    .post("https://localhost:5000/currentuser", {}, { headers })
+    .post(
+      "https://mytinerayapplication.herokuapp.com/currentuser",
+      {},
+      { headers }
+    )
     .then(res => {
       // console.log("line 220");
       dispatch({

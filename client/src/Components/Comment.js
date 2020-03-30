@@ -20,7 +20,10 @@ class Comment extends Component {
       postId: this.props.itineraryId
     };
     axios
-      .post("http://localhost:5000/comments/saveComment", variables)
+      .post(
+        "https://mytinerayapplication.herokuapp.com/comments/saveComment",
+        variables
+      )
       .then(response => {
         console.log(response);
         if (response.data.success) {
