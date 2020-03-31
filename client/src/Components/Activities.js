@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import Comment from "./Comment";
 
 import "../CSS/Activities.css";
-// import {Link} from "react-router-dom";
-
-// let commentList = [];
 
 export default class Activities extends Component {
   openCaroussel = function() {
@@ -22,7 +19,7 @@ export default class Activities extends Component {
   };
 
   state = {
-    carousselOpen: true,
+    carousselOpen: false,
     commentList: []
   };
 
