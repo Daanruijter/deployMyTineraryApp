@@ -328,19 +328,20 @@ class Itinerary extends Component {
                   src={itinerary.image}
                 />
               </a>
+              <div className="itinerary-favourite">
+                <FavouriteIcon
+                  title={itinerary.title}
+                  id={itinerary._id}
+                  favouritesarray={
+                    this.props.state.favourites.favouritesArray.favourites
+                  }
+                  favouritesArrayItineraryComponentFromLocalStorage={
+                    this.state.favouritesArrayItineraryComponentFromLocalStorage
+                  }
+                ></FavouriteIcon>
+              </div>
             </div>
-            <div className="itinerary-favourite">
-              <FavouriteIcon
-                title={itinerary.title}
-                id={itinerary._id}
-                favouritesarray={
-                  this.props.state.favourites.favouritesArray.favourites
-                }
-                favouritesArrayItineraryComponentFromLocalStorage={
-                  this.state.favouritesArrayItineraryComponentFromLocalStorage
-                }
-              ></FavouriteIcon>
-            </div>
+
             <div className="itinenary-more-information">
               <Activities
                 activities={this.state[city]}

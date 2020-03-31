@@ -71,7 +71,6 @@ class FavouriteIcon extends Component {
       this.props.deleteFavourites(favouriteData);
       this.props.decreaseItinerariesCount(itineraryId);
       this.setState({ itineraryFavourite: false });
-      window.location.reload();
 
       console.log(this.props.id, "is in the array");
     }
@@ -80,8 +79,10 @@ class FavouriteIcon extends Component {
       this.props.increaseItinerariesCount(itineraryId);
       this.setState({ itineraryFavourite: true });
       console.log(this.props.id, "is not in the array");
-      window.location.reload();
     }
+    setTimeout(function() {
+      window.location.reload();
+    }, 1000);
   }
 
   render() {
