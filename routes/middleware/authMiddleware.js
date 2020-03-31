@@ -1,4 +1,5 @@
-const config = require("config");
+const config =
+  "mongodb+srv://dr:sSXGDQnstqEWcLHx@cluster0-4ie2c.mongodb.net/test?retryWrites=true&w=majority";
 const jwt = require("jsonwebtoken");
 
 //next brings you to the next middleware once you are done with what the middleware does//
