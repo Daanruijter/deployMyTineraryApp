@@ -1,8 +1,6 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
 
-// import jwt_decode from "jwt-decode";
-
 import {
   USER_LOADED,
   USER_LOADING,
@@ -129,8 +127,7 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
       "Content-Type": "application/json"
     }
   };
-  console.log(email);
-  //request body//
+
   const body = JSON.stringify({
     email,
     password,
@@ -207,17 +204,10 @@ export const fetchCurrentUser = () => {
 
 //Send user token
 export const sendUserToken = () => dispatch => {
-  //headers
-  // console.log("sendusertoken exectued, line 203");
   let headers = {
-    // "Content-Type": "application/json",
     "Content-Type": "application/x-www-form-urlencoded",
     "x-auth-token": localStorage.getItem("token")
   };
-  // console.log(headers);
-  // JSON.stringify(token);
-
-  // console.log(body);
 
   axios
     .post(
@@ -226,7 +216,6 @@ export const sendUserToken = () => dispatch => {
       { headers }
     )
     .then(res => {
-      // console.log("line 220");
       dispatch({
         type: SEND_USER_TOKEN_SUCCESS,
         payload: res.data
@@ -241,4 +230,3 @@ export const sendUserToken = () => dispatch => {
       console.log(err.response);
     });
 };
-// console.log(res);

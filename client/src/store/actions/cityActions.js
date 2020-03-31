@@ -78,14 +78,3 @@ export const sendCityName = cityName => {
     value: cityName
   };
 };
-
-//send cityname//
-
-// export const sendCityName = (cityName) => {
-
-//     return {
-//         type:SEND_CITYNAME,
-//         value: cityName
-//     }
-
-// }

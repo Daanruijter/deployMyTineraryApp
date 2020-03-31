@@ -4,7 +4,6 @@ const itineraryModel = require("../model/itineraryModel");
 
 router.put("/increaseitinerariestocount/:currentItinerary", (req, res) => {
   let currentItinerary = req.params.currentItinerary;
-  console.log(currentItinerary);
 
   itineraryModel
     .findOneAndUpdate(
@@ -24,7 +23,6 @@ router.put("/increaseitinerariestocount/:currentItinerary", (req, res) => {
 
 router.put("/decreaseitinerariestocount/:currentItinerary", (req, res) => {
   let currentItinerary = req.params.currentItinerary;
-  console.log(currentItinerary);
 
   itineraryModel
     .findOneAndUpdate(

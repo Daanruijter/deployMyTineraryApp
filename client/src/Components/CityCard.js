@@ -10,13 +10,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const CityCard = props => {
-  // console.log(props.id);
-  // let cityname=props.cityname
-
   const handleClick = e => {
-    // console.log("tetststst");
-    // console.log(e);
-
     let cityName = props.cityname;
 
     props.sendCityName(cityName);
@@ -27,13 +21,6 @@ const CityCard = props => {
       <div className="card">
         <div className="card-image">
           <img className="city-image" src={props.image} alt="DSC_0265" />
-          {/* let op: deze link is niet goed, maar puur om errors weg te werken */}
-          {/* <a
-            href="http://www.ns.nl"
-            className="halfway-fab btn-floating pink pulse"
-          >
-            <i className="material-icons">favorite</i>
-          </a> */}
         </div>
         <div className="card-content">
           <span className="card-title">

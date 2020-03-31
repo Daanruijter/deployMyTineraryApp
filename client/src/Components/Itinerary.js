@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 import { fetchFavouritesPage } from "../store/actions/favouriteActions";
 import homeIcon from "../Pictures/homeIcon.png";
 import { fetchFavourites } from "../store/actions/favouriteActions";
-// import "../CSS/materialize.min.css";
-// import { matchPath, withRouter } from 'react-router';
 
 class Itinerary extends Component {
   state = {
@@ -268,14 +266,10 @@ class Itinerary extends Component {
   };
 
   componentDidMount() {
-    console.log("componentdidmountfromitineraries");
     let cityItinerariesToBeFetched = this.props.match.params.name;
-    // console.log(this.props.match.params);
-    console.log(cityItinerariesToBeFetched);
 
     this.props.fetchItineraries(cityItinerariesToBeFetched);
     if (this.props.state.auth.token !== null) {
-      console.log("if executeddd");
       let token = localStorage.getItem("token");
 
       let decoded = jwt_decode(token);
@@ -286,7 +280,6 @@ class Itinerary extends Component {
     let favArray = JSON.parse(
       localStorage.getItem("favouritesArrayLocalStorage")
     );
-    console.log(favArray);
 
     this.setState({
       favouritesArrayItineraryComponentFromLocalStorage: favArray
@@ -328,8 +321,6 @@ class Itinerary extends Component {
             <div className="itinenary-hashtags">{itinerary.hashtags}</div>
 
             <div className="itinerary-image">
-              {/* {console.log(itinerary.moreInformation)} */}
-              {/* <Link to={`${itinerary.moreInformation}`}> */}
               <a href={itinerary.moreInformation}>
                 <img
                   alt=""
@@ -337,7 +328,6 @@ class Itinerary extends Component {
                   src={itinerary.image}
                 />
               </a>
-              {/* </Link> */}
             </div>
             <div className="itinerary-favourite">
               <FavouriteIcon
@@ -372,7 +362,10 @@ class Itinerary extends Component {
             className="favourite-itinerary-page"
           >
             {this.props.state.auth.isAuthenticated ? (
-              <div className="back-to-itinerary-page">
+              <div
+                cityNameId={this.props.match.params.name}
+                className="back-to-itinerary-page"
+              >
                 <Link to={`/favourites/${this.props.match.params.cityName}`}>
                   Go to your favourite MYtineraries page
                 </Link>
@@ -429,37 +422,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itinerary);
-
-//not used code//
-
-// var token = localStorage.getItem("token");
-// var decoded = jwt_decode(token);
-// console.log(decoded.favourites);
-
-// let favouritesArray = decoded.favourites;
-
-// let favouriteOrNot = favouritesArray.includes(favouritesComponentId);
-// console.log(favouriteOrNot);
-
-// if (this.props.state.auth.isAuthenticated === true) {
-//   var token = localStorage.getItem("token");
-//   var decoded = jwt_decode(token);
-//   let currentUserIdToFetch = decoded.id;
-
-//   fetchFavourites(currentUserIdToFetch);
-// }
-
-// triggerFetchFavouritePage = () => {
-//   let favouritesArray = this.props.state.favourites.favouritesArray
-//     .favourites;
-
-//   this.props.fetchFavouritesPage(favouritesArray);
-// };
-
-// //materialize like icon//
-// <a
-// href="http://www.ns.nl"
-// className="halfway-fab btn-floating pink pulse"
-// >
-// <i className="material-icons">favorite</i>
-// </a>

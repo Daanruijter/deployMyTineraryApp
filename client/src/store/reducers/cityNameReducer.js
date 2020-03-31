@@ -1,7 +1,7 @@
 import { SEND_CITYNAME } from "../actions/cityTypes";
 
 const initialState = {
-  cityName: "s"
+  cityName: ""
 };
 
 const reducer = (state = initialState, action) => {
