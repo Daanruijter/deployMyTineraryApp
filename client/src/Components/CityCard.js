@@ -26,11 +26,7 @@ const CityCard = props => {
           <span className="card-title">
             {props.cityname}, {props.country}{" "}
           </span>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis
-            aliquam orci. Orci varius natoque penatibus et magnis dis parturient
-            montes, nascetur ridiculus mus.
-          </p>
+          <p></p>
         </div>
         <div className="card-action">
           <Link

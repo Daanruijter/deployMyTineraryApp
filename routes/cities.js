@@ -4,6 +4,7 @@ const cityModel = require("../model/cityModel");
 
 /*get all cities*/
 router.get("/all", (req, res) => {
+  console.log("hi");
   cityModel
     .find({})
     .then(files => {

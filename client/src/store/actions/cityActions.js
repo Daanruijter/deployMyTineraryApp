@@ -31,7 +31,6 @@ export const fetchCitiesFailure = error => {
 export const fetchCities = () => {
   return dispatch => {
     dispatch(fetchCitiesRequest());
-    console.log("cityrequest");
 
     return fetch("https://myitinerariestravelapp.herokuapp.com/cities/all", {
       method: "GET",
@@ -64,8 +63,6 @@ export const sendUserInput = e => {
 
 //send filter cities//
 export const sendFilteredCities = filteredCities => {
-  console.log(filteredCities);
-
   return {
     type: SEND_FILTERED_CITY_REDUCER,
     value: filteredCities

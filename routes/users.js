@@ -10,7 +10,9 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 
 router.get("/getCityName/:cityName", (req, res) => {
+  console.log("cityName");
   let cityName = req.params.cityName;
+  console.log(cityName);
   cityModel.findOne({ name: cityName }).then(result => {
     res.send(result);
   });

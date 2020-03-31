@@ -272,7 +272,7 @@ class Favourites extends Component {
 
     let cityName = this.props.match.params.cityName;
     fetch(
-      `https://mytinerayapplication.herokuapp.com/favourites/getCityName/${cityName}`,
+      `https://myitinerariestravelapp.herokuapp.com/favourites/getCityName/${cityName}`,
 
       {
         method: "GET",
@@ -285,6 +285,7 @@ class Favourites extends Component {
       .then(response => {
         return response.json();
       })
+
       .then(data => {
         console.log(data);
         this.setState({ cityNameId: data });

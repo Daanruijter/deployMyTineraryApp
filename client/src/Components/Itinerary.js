@@ -362,10 +362,7 @@ class Itinerary extends Component {
             className="favourite-itinerary-page"
           >
             {this.props.state.auth.isAuthenticated ? (
-              <div
-                cityNameId={this.props.match.params.name}
-                className="back-to-itinerary-page"
-              >
+              <div className="back-to-itinerary-page">
                 <Link to={`/favourites/${this.props.match.params.cityName}`}>
                   Go to your favourite MYtineraries page
                 </Link>
