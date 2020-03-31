@@ -41,12 +41,15 @@ export const fetchItineraries = cityItinerariesToBeFetched => {
 
     //template literal string
 
-    return fetch(`itineraries/${cityItinerariesToBeFetched}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
+    return fetch(
+      `https://myitinerariestravelapp.herokuapp.com/itineraries/${cityItinerariesToBeFetched}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
       }
-    })
+    )
       .then(response => {
         return response.json();
       })
@@ -93,9 +96,13 @@ export const increaseItinerariesCount = itineraryId => dispatch => {
   let body = "";
 
   axios
-    .put(`itineraries/increaseitinerariestocount/${currentItinerary}`, body, {
-      headers
-    })
+    .put(
+      `https://myitinerariestravelapp.herokuapp.com/itineraries/increaseitinerariestocount/${currentItinerary}`,
+      body,
+      {
+        headers
+      }
+    )
 
     .then(res => {
       dispatch({
@@ -151,9 +158,13 @@ export const decreaseItinerariesCount = itineraryId => dispatch => {
   let body = "";
 
   axios
-    .put(`itineraries/decreaseitinerariestocount/${currentItinerary}`, body, {
-      headers
-    })
+    .put(
+      `https://myitinerariestravelapp.herokuapp.com/itineraries/decreaseitinerariestocount/${currentItinerary}`,
+      body,
+      {
+        headers
+      }
+    )
 
     .then(res => {
       dispatch({

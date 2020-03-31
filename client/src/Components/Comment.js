@@ -19,17 +19,22 @@ class Comment extends Component {
       writer: this.props.state.auth.user._id,
       postId: this.props.itineraryId
     };
-    axios.post("comments/saveComment", variables).then(response => {
-      console.log(response);
-      if (response.data.success) {
-        this.setState({ comment: "" });
-        //new comment we just saved in Mongo is response.data.result//
-        this.props.refreshFunction(response.data.result);
-      } else {
-        alert("failed to save comment");
-      }
-      console.log(variables);
-    });
+    axios
+      .post(
+        "https://myitinerariestravelapp.herokuapp.com/comments/saveComment",
+        variables
+      )
+      .then(response => {
+        console.log(response);
+        if (response.data.success) {
+          this.setState({ comment: "" });
+          //new comment we just saved in Mongo is response.data.result//
+          this.props.refreshFunction(response.data.result);
+        } else {
+          alert("failed to save comment");
+        }
+        console.log(variables);
+      });
   };
 
   render() {

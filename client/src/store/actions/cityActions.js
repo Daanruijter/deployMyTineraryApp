@@ -33,7 +33,7 @@ export const fetchCities = () => {
     dispatch(fetchCitiesRequest());
     console.log("cityrequest");
 
-    return fetch("cities/all", {
+    return fetch("https://myitinerariestravelapp.herokuapp.com/cities/all", {
       method: "GET",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
