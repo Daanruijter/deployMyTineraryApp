@@ -13,7 +13,10 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const db = config.get("mongoURI");
+// const db = config.get("mongoURI");
+
+const db =
+  "mongodb+srv://dr:sSXGDQnstqEWcLHx@cluster0-4ie2c.mongodb.net/test?retryWrites=true&w=majority";
 
 //added to make the app work on Heroku
 // ... other imports
