@@ -49,7 +49,6 @@ class Login extends Component {
       //check for register error
 
       if (error.id === "LOGIN_FAIL") {
-        console.log(error.msg);
         this.setState({ msg: error.msg.msg });
       } else {
         this.setState({ msg: null });
@@ -80,12 +79,11 @@ class Login extends Component {
 
     let password = this.props.password;
     let email = this.props.email;
-    await this.props.sendUserToken();
-    await this.props.fetchCurrentUser();
-
     if (password !== "" && email !== "") {
       this.props.clearErrors();
     }
+    await this.props.sendUserToken();
+    await this.props.fetchCurrentUser();
   };
 
   render() {

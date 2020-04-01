@@ -82,7 +82,9 @@ export const register = ({
     })
 
     .catch(err => {
-      dispatch(returnErrors(err.data, err.status, "REGISTER_FAIL"));
+      dispatch(
+        returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
+      );
       console.log(err.response);
       dispatch({
         type: REGISTER_FAIL
@@ -139,6 +141,7 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
     .post("https://myitinerariestravelapp.herokuapp.com/login", body, config)
 
     .then(res => {
+      console.log(res);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
@@ -146,7 +149,10 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
       dispatch(fetchCurrentUser());
     })
     .catch(err => {
-      dispatch(returnErrors(err.data, err.status, "LOGIN_FAIL"));
+      console.log(err.response.data);
+      dispatch(
+        returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
+      );
 
       dispatch({
         type: LOGIN_FAIL

@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
 
         jwt.sign(
           payload,
-
+          //potential problem in heroku//
           config.get("jwtSecret"),
           { expiresIn: 2592000 },
           (err, token) => {
