@@ -40,16 +40,21 @@ export const fetchItineraries = cityItinerariesToBeFetched => {
     dispatch(fetchItinerariesRequest());
 
     //template literal string
+    let url = "";
 
-    return fetch(
-      `https://myitinerariestravelapp.herokuapp.com/itineraries/${cityItinerariesToBeFetched}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
+    if (process.env.NODE_ENV === "development") {
+      url = `http://localhost:5000/itineraries/${cityItinerariesToBeFetched}`;
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = `https://myitinerariestravelapp.herokuapp.com/itineraries/${cityItinerariesToBeFetched}`;
+    }
+
+    return fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
       }
-    )
+    })
       .then(response => {
         return response.json();
       })
@@ -95,14 +100,19 @@ export const increaseItinerariesCount = itineraryId => dispatch => {
   let currentItinerary = itineraryId;
   let body = "";
 
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = `http://localhost:5000/itineraries/increaseitinerariestocount/${currentItinerary}`;
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = `https://myitinerariestravelapp.herokuapp.com/itineraries/increaseitinerariestocount/${currentItinerary}`;
+  }
+
   axios
-    .put(
-      `https://myitinerariestravelapp.herokuapp.com/itineraries/increaseitinerariestocount/${currentItinerary}`,
-      body,
-      {
-        headers
-      }
-    )
+    .put(url, body, {
+      headers
+    })
 
     .then(res => {
       dispatch({
@@ -156,15 +166,19 @@ export const decreaseItinerariesCount = itineraryId => dispatch => {
 
   let currentItinerary = itineraryId;
   let body = "";
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = `http://localhost:5000/itineraries/decreaseitinerariestocount/${currentItinerary}`;
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = `https://myitinerariestravelapp.herokuapp.com/itineraries/decreaseitinerariestocount/${currentItinerary}`;
+  }
 
   axios
-    .put(
-      `https://myitinerariestravelapp.herokuapp.com/itineraries/decreaseitinerariestocount/${currentItinerary}`,
-      body,
-      {
-        headers
-      }
-    )
+    .put(url, body, {
+      headers
+    })
 
     .then(res => {
       dispatch({

@@ -26,14 +26,19 @@ export const postFavourites = favouriteData => dispatch => {
 
   let body = { itineraryId: favourites.itineraryId };
 
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = `http://localhost:5000/favourites/${currentUserId}`;
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = `https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`;
+  }
+
   axios
-    .post(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/${currentUserId}`,
-      body,
-      {
-        headers
-      }
-    )
+    .post(url, body, {
+      headers
+    })
     .then(res => {
       dispatch({
         type: POST_FAVOURITES_SUCCESS,
@@ -64,14 +69,19 @@ export const deleteFavourites = favouriteData => dispatch => {
   };
   let body = "test";
 
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = `http://localhost:5000/favourites/delete/${currentUserId}/${itineraryId}`;
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = `https://myitinerariestravelapp.herokuapp.com/favourites/delete/${currentUserId}/${itineraryId}`;
+  }
+
   axios
-    .delete(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/delete/${currentUserId}/${itineraryId}`,
-      body,
-      {
-        headers
-      }
-    )
+    .delete(url, body, {
+      headers
+    })
 
     .then(res => {
       dispatch({
@@ -124,15 +134,21 @@ export const fetchFavourites = currentUserIdToFetch => {
   return dispatch => {
     dispatch(fetchFavouritesRequest());
 
-    return fetch(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/getfavourites/${currentUserId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
+    let url = "";
+
+    if (process.env.NODE_ENV === "development") {
+      url = `http://localhost:5000/favourites/getfavourites/${currentUserId}`;
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = `https://myitinerariestravelapp.herokuapp.com/favourites/getfavourites/${currentUserId}`;
+    }
+
+    return fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
       }
-    )
+    })
       .then(response => {
         return response.json();
       })
@@ -184,11 +200,20 @@ export const fetchFavouritesPage = favouritesArray => {
 
   let currentUserId = decoded.id;
 
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = `http://localhost:5000/favourites/getFavouritesPage/${currentUserId}`;
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = `https://myitinerariestravelapp.herokuapp.com/favourites/getFavouritesPage/${currentUserId}`;
+  }
+
   return dispatch => {
     dispatch(fetchFavouritesPageRequest());
 
     return fetch(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/getFavouritesPage/${currentUserId}`,
+      url,
 
       {
         method: "GET",

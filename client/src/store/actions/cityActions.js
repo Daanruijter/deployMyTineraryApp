@@ -32,7 +32,16 @@ export const fetchCities = () => {
   return dispatch => {
     dispatch(fetchCitiesRequest());
 
-    return fetch("https://myitinerariestravelapp.herokuapp.com/cities/all", {
+    let url = "";
+
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/cities/all";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "https://myitinerariestravelapp.herokuapp.com/cities/all";
+    }
+
+    return fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"

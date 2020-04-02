@@ -264,15 +264,22 @@ class Favourites extends Component {
   };
 
   componentDidMount() {
-    // console.log(this.props.state.auth.isAuthenticated);
+    let url = "";
+    let cityName = this.props.match.params.cityName;
+
+    if (process.env.NODE_ENV === "development") {
+      url = `http://localhost:5000/favourites/getCityName/${cityName}`;
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = `https://myitinerariestravelapp.herokuapp.com/favourites/getCityName/${cityName}`;
+    }
 
     if (this.props.state.auth.token !== null) {
       this.props.fetchFavouritesPage();
     }
 
-    let cityName = this.props.match.params.cityName;
     fetch(
-      `https://myitinerariestravelapp.herokuapp.com/favourites/getCityName/${cityName}`,
+      url,
 
       {
         method: "GET",

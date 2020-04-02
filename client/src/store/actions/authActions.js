@@ -22,11 +22,17 @@ export const loadUser = () => (dispatch, getState) => {
   //user loading
   dispatch({ type: USER_LOADING });
 
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:5000/login/user";
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = "https://myitinerariestravelapp.herokuapp.com/login/user";
+  }
+
   axios
-    .get(
-      "https://myitinerariestravelapp.herokuapp.com/login/user",
-      tokenConfig(getState)
-    )
+    .get(url, tokenConfig(getState))
     .then(res =>
       dispatch({
         type: USER_LOADED,
@@ -66,12 +72,17 @@ export const register = ({
     picture
   });
 
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:5000/createaccount";
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = "https://myitinerariestravelapp.herokuapp.com/createaccount";
+  }
+
   axios
-    .post(
-      "https://myitinerariestravelapp.herokuapp.com/createaccount",
-      body,
-      config
-    )
+    .post(url, body, config)
 
     .then(res => {
       dispatch({
@@ -137,8 +148,17 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
     lastName
   });
 
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:5000/login";
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = "https://myitinerariestravelapp.herokuapp.com/login";
+  }
+
   axios
-    .post("https://myitinerariestravelapp.herokuapp.com/login", body, config)
+    .post(url, body, config)
 
     .then(res => {
       console.log(res);
@@ -185,7 +205,16 @@ export const fetchCurrentUser = () => {
   return dispatch => {
     dispatch(fetchCurrentUserRequest());
 
-    return fetch("https://myitinerariestravelapp.herokuapp.com/currentuser", {
+    let url = "";
+
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/currentuser";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url = "https://myitinerariestravelapp.herokuapp.com/currentuser";
+    }
+
+    return fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -214,6 +243,15 @@ export const sendUserToken = () => dispatch => {
     "Content-Type": "application/x-www-form-urlencoded",
     "x-auth-token": localStorage.getItem("token")
   };
+
+  let url = "";
+
+  if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:5000/currentuser";
+  }
+  if (process.env.NODE_ENV === "production") {
+    url = "https://myitinerariestravelapp.herokuapp.com/currentuser";
+  }
 
   axios
     .post(

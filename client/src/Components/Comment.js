@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+// Thanks, Pol! This is a complicated part for me and you help me a lot to understand it:P I have
+
 class Comment extends Component {
   state = {
     comment: ""
@@ -14,11 +16,13 @@ class Comment extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    let url = "";
+
     if (process.env.NODE_ENV === "development") {
-      console.log("development");
+      url = "http://localhost:5000/comments/saveComment";
     }
     if (process.env.NODE_ENV === "production") {
-      console.log("production");
+      url = "https://myitinerariestravelapp.herokuapp.com/comments/saveComment";
     }
 
     let content = this.state.comment;
@@ -39,32 +43,8 @@ class Comment extends Component {
       postId
     });
 
-    // {
-    //   content: "sss",
-    //   writer: "ssss",
-    //   postId: "sss"
-    // };
-
-    // const body = JSON.stringify(test);
-    // console.log(body);
-
-    // {
-    //   //   comment: `${comment}`,
-    //   //   writer: `${writer}`,
-    //   //   postId: `${postId}`
-
-    // const body = {
-    //   content: "sss",
-    //   writer: "ssss",
-    //   postId: "sss"
-    // };
-
     axios
-      .post(
-        "https://myitinerariestravelapp.herokuapp.com/comments/saveComment",
-        body,
-        config
-      )
+      .post(url, body, config)
       .then(res => {
         console.log(res);
       })
