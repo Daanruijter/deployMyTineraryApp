@@ -19,7 +19,7 @@ export default class Activities extends Component {
   };
 
   state = {
-    carousselOpen: false,
+    carousselOpen: true,
     commentList: []
   };
 

@@ -3,6 +3,10 @@ const express = require("express");
 const config = require("config");
 
 const app = express();
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 const port = process.env.PORT || 5000;
 
@@ -18,7 +22,7 @@ const db =
 const path = require("path");
 
 // ... other app.use middleware
-app.use(express.static(path.join(__dirname, "client", "build")));
+// app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use(bodyParser.json());
 app.use(
@@ -31,6 +35,18 @@ app.use(cors());
 app.listen(port, () => {
   console.log("Server is running on " + port + "port");
 });
+
+mongoose
+  .connect(db, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    dbName: "itinerary-app"
+  })
+  .then(() => console.log("Connection to Mongo DB established"))
+  .catch(err => console.log(err + "There is no connection"));
+
+mongoose.set("debug", true);
 
 //if you are on this path, require this file//
 //this creates API routes//
@@ -51,14 +67,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-mongoose
-  .connect(db, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    dbName: "itinerary-app"
-  })
-  .then(() => console.log("Connection to Mongo DB established"))
-  .catch(err => console.log(err + "There is no connection"));
-
-mongoose.set("debug", true);
+if (process.env.NODE_ENV === "development") {
+  console.log("development");
+}
+if (process.env.NODE_ENV === "production") {
+  console.log("production");
+}

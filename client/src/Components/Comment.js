@@ -14,27 +14,83 @@ class Comment extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const variables = {
-      content: this.state.comment,
-      writer: this.props.state.auth.user._id,
-      postId: this.props.itineraryId
+    if (process.env.NODE_ENV === "development") {
+      console.log("development");
+    }
+    if (process.env.NODE_ENV === "production") {
+      console.log("production");
+    }
+
+    let content = this.state.comment;
+    let writer = this.props.state.auth.user._id;
+    let postId = this.props.itineraryId;
+
+    console.log(content, writer, postId);
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
     };
+
+    const body = JSON.stringify({
+      content,
+      writer,
+      postId
+    });
+
+    // {
+    //   content: "sss",
+    //   writer: "ssss",
+    //   postId: "sss"
+    // };
+
+    // const body = JSON.stringify(test);
+    // console.log(body);
+
+    // {
+    //   //   comment: `${comment}`,
+    //   //   writer: `${writer}`,
+    //   //   postId: `${postId}`
+
+    // const body = {
+    //   content: "sss",
+    //   writer: "ssss",
+    //   postId: "sss"
+    // };
+
     axios
       .post(
         "https://myitinerariestravelapp.herokuapp.com/comments/saveComment",
-        variables
+        body,
+        config
       )
-      .then(response => {
-        console.log(response);
-        if (response.data.success) {
-          this.setState({ comment: "" });
-          //new comment we just saved in Mongo is response.data.result//
-          this.props.refreshFunction(response.data.result);
-        } else {
-          alert("failed to save comment");
-        }
-        console.log(variables);
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err.response.data);
       });
+
+    // axios
+    //   .post(
+    //     "http://myitinerariestravelapp.herokuapp.com/comments/saveComment",
+    //     body,
+    //     {
+    //       headers
+    //     }
+    //   )
+    //   .then(response => {
+    //     console.log(response);
+    //     if (response.data.success) {
+    //       this.setState({ comment: "" });
+    //       //new comment we just saved in Mongo is response.data.result//
+    //       this.props.refreshFunction(response.data.result);
+    //     } else {
+    //       alert("failed to save comment");
+    //     }
+    //     console.log(body);
+    //   });
   };
 
   render() {
