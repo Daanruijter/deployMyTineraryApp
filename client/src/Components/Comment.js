@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
-// Thanks, Pol! This is a complicated part for me and you help me a lot to understand it:P I have
-
 class Comment extends Component {
   state = {
     comment: ""

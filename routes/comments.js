@@ -13,17 +13,21 @@ const auth = require("./middleware/authMiddleware");
 router.post("/saveComment", (req, res) => {
   const comment = new commentModel(req.body);
   comment.save().then(result => {
-    console.log(result, "no error????");
+    // console.log(result, "n error????");
     res.send(result);
+    commentModel.find({ _id: comment._id }).then(res => {
+      console.log(res, "resssss");
+    });
   });
+  // if (err) {
+  //   return res.json({ success: false, err });
+  // }
+  // console.log(comment._id);
+
+  // .then(() => {
+
+  // })
 });
-// if (err) {
-//   return res.json({ success: false, err });
-// }
-// console.log(comment._id);
-// commentModel.find({ id: comment._id }).then(res => {
-//   console.log(res);
-// });
 // .populate("writer")
 // .exec((err, result) => {
 //   if (err) {
