@@ -1,0 +1,36 @@
+.comment-all-wrapper {
+    width: 100%;
+}
+
+
+.comment-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.comment-flexer {
+    justify-content: flex-end;
+
+    text-align: left;
+    margin-left: 9%;
+    margin-right: 5%;
+    width: 80%;
+}
+
+.commentbox {
+
+    color: blue;
+
+    font-weight: lighter;
+
+}
+
+.comment-username {
+    color: blue;
+    font-weight: bold;
+    display: inline;
+}
+
+form {
+    margin-top: 5%;
+}

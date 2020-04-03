@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import "../CSS/Comments.css";
 
 class Comment extends Component {
   state = {
@@ -61,20 +62,19 @@ class Comment extends Component {
   render() {
     let commentLists = this.props.commentListsMongo;
     let commentListsDisplay = commentLists.map(comment => (
-      <div key={comment._id}>
-        {comment.userData.firstName} {comment.userData.lastName} comments{" "}
+      <div className="commentbox" key={comment._id}>
+        <p className="comment-username">
+          {comment.userData.firstName} {comment.userData.lastName}
+          {":"}
+        </p>{" "}
         {comment.content}
+        <hr />
       </div>
     ));
     console.log(commentListsDisplay);
 
     return (
-      <div>
-        <p>replies</p>
-        {commentListsDisplay}
-
-        <hr></hr>
-
+      <div className="comment-all-wrapper">
         <form onSubmit={this.onSubmit}>
           <label>
             <input
@@ -86,6 +86,11 @@ class Comment extends Component {
             <button>Submit</button>
           </label>
         </form>
+        <p>comments</p>
+        <div className="comment-wrapper">
+          <div className="comment-flexer">{commentListsDisplay}</div>
+        </div>
+        <hr></hr>
       </div>
     );
   }
