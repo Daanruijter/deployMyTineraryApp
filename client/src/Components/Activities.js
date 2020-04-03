@@ -1,13 +1,41 @@
 import React, { Component } from "react";
 import Comment from "./Comment";
+import axios from "axios";
 
 import "../CSS/Activities.css";
 
 export default class Activities extends Component {
+  state = {
+    carousselOpen: false,
+    commentLists: [],
+    commentListsMongo: []
+  };
+
   openCaroussel = function() {
     this.setState(prevState => ({
       carousselOpen: !prevState.carousselOpen
     }));
+    if (this.state.carousselOpen == !true) {
+      console.log("carousselopen");
+      let url = "";
+      let itineraryId = this.props.itineraryId;
+      // let headers = { "Content-Type": "application/json" };
+      let headers = {};
+      let body = { itineraryId };
+      // let body = { itineraryId: itineraryId };
+
+      if (process.env.NODE_ENV === "development") {
+        url = "http://localhost:5000/comments/getCommentsForASpecificItinerary";
+      }
+      if (process.env.NODE_ENV === "production") {
+        url =
+          "https://myitinerariestravelapp.herokuapp.com/comments/getCommentsForASpecificItinerary";
+      }
+
+      axios.post(url, body, headers).then(result => {
+        this.setState({ commentListsMongo: result.data.result });
+      });
+    }
   };
 
   handleClick = () => {
@@ -15,12 +43,11 @@ export default class Activities extends Component {
   };
 
   updateComment = newComment => {
-    this.state.commentList.push(newComment);
-  };
-
-  state = {
-    carousselOpen: true,
-    commentList: []
+    let commentLists = this.state.commentLists;
+    commentLists.push(newComment);
+    console.log("updatecomment");
+    console.log(newComment);
+    this.setState({ commentLists: commentLists });
   };
 
   render() {
@@ -56,9 +83,10 @@ export default class Activities extends Component {
           <div className="activities-content">
             <div className="activities-flexer">{activities}</div>
             <Comment
-              commentList={this.state.commentList}
               itineraryId={this.props.itinerary._id}
               refreshFunction={this.updateComment}
+              commentLists={this.state.commentLists}
+              commentListsMongo={this.state.commentListsMongo}
             ></Comment>
             <p
               className="activities-close"

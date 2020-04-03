@@ -20,6 +20,9 @@ const commentSchema = mongoose.Schema(
     },
     content: {
       type: String
+    },
+    userData: {
+      type: Object
     }
   },
   { timestamps: true }

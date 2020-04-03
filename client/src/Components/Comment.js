@@ -6,6 +6,7 @@ class Comment extends Component {
   state = {
     comment: ""
   };
+
   handleChange = e => {
     let comment = e.currentTarget.value;
     console.log(comment);
@@ -24,8 +25,9 @@ class Comment extends Component {
     }
 
     let content = this.state.comment;
-    let writer = this.props.state.auth.user._id;
+    let writer = this.props.state.auth.user;
     let postId = this.props.itineraryId;
+    let userData = this.props.state.auth.user;
 
     console.log(content, writer, postId);
 
@@ -38,47 +40,41 @@ class Comment extends Component {
     const body = JSON.stringify({
       content,
       writer,
-      postId
+      postId,
+      userData
     });
 
     axios
       .post(url, body, config)
       .then(res => {
         console.log(res);
+        this.setState({ comment: "" });
+        this.props.refreshFunction(res.data.result);
       })
       .catch(err => {
         console.log(err.response.data);
       });
-
-    // axios
-    //   .post(
-    //     "http://myitinerariestravelapp.herokuapp.com/comments/saveComment",
-    //     body,
-    //     {
-    //       headers
-    //     }
-    //   )
-    //   .then(response => {
-    //     console.log(response);
-    //     if (response.data.success) {
-    //       this.setState({ comment: "" });
-    //       //new comment we just saved in Mongo is response.data.result//
-    //       this.props.refreshFunction(response.data.result);
-    //     } else {
-    //       alert("failed to save comment");
-    //     }
-    //     console.log(body);
-    //   });
   };
 
+  // let favouritesToShow = favourites.map((favouriteItinerary, index) => (
+
   render() {
+    let commentLists = this.props.commentListsMongo;
+    let commentListsDisplay = commentLists.map(comment => (
+      <div key={comment._id}>
+        {comment.userData.firstName} {comment.userData.lastName} comments{" "}
+        {comment.content}
+      </div>
+    ));
+    console.log(commentListsDisplay);
+
     return (
       <div>
         <p>replies</p>
-        {/* comment lists */}
-        {/* root comment form */}
+        {commentListsDisplay}
+
         <hr></hr>
-        {this.props.commentList}
+
         <form onSubmit={this.onSubmit}>
           <label>
             <input

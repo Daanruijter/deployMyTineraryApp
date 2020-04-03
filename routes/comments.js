@@ -11,31 +11,32 @@ const auth = require("./middleware/authMiddleware");
 //get the current user with the token
 
 router.post("/saveComment", (req, res) => {
+  console.log(req.body.postId);
   const comment = new commentModel(req.body);
-  comment.save().then(result => {
-    // console.log(result, "n error????");
-    res.send(result);
-    commentModel.find({ _id: comment._id }).then(res => {
-      console.log(res, "resssss");
+  comment
+    .save()
+    .then(() => {
+      commentModel.find({ postId: req.body.postId }).then(result => {
+        return res.status(200).json({ success: true, result });
+      });
+    })
+
+    .catch(err => {
+      return res.json({ succes: false, err });
     });
-  });
-  // if (err) {
-  //   return res.json({ success: false, err });
-  // }
-  // console.log(comment._id);
-
-  // .then(() => {
-
-  // })
 });
-// .populate("writer")
-// .exec((err, result) => {
-//   if (err) {
-//     return res.json({ success: false, err });
-//   }
-//   return res.status(200).json({ succes: true, result });
-// });
-//test//
-// });
+
+router.post("/getCommentsForASpecificItinerary", (req, res) => {
+  console.log(req.body);
+  // res.send(req.body);
+  commentModel
+    .find({ postId: req.body.itineraryId })
+    .then(result => {
+      return res.status(200).json({ success: true, result });
+    })
+    .catch(err => {
+      return res.json({ succes: false, err });
+    });
+});
 
 module.exports = router;
