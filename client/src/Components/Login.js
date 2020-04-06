@@ -9,6 +9,9 @@ import { login } from "../store/actions/authActions";
 import { fetchCurrentUser } from "../store/actions/authActions";
 import { sendUserToken } from "../store/actions/authActions";
 import { fetchFavouritesPage } from "../store/actions/favouriteActions";
+import { Redirect } from "react-router-dom";
+
+import Landing from "./Landing";
 
 class Login extends Component {
   constructor(props) {
@@ -16,7 +19,8 @@ class Login extends Component {
     this.state = {
       password: "",
       email: "",
-      createaccountDivOpen: true
+      loginDivOpen: true,
+      redirect: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,8 +37,19 @@ class Login extends Component {
   toggle = () => {
     console.log(this.state);
     this.setState({
-      createaccountDivOpen: !this.state.createaccountDivOpen
+      loginDivOpen: !this.state.loginDivOpen
     });
+
+    if (this.state.loginDivOpen) {
+      console.log("werkt");
+      console.log(this.state.redirect);
+      this.setState({ redirect: "/" });
+
+      let that = this;
+      setTimeout(function() {
+        that.props.loginOpen();
+      }, 1000);
+    }
   };
   componentDidMount() {
     if (this.props.state.auth.token) {
@@ -87,9 +102,14 @@ class Login extends Component {
   };
 
   render() {
+    if (this.state.redirect !== null) {
+      console.log("adlajljadjlljsld;djadlkjadladjasdjk");
+      return <Redirect to={this.state.redirect} />;
+    }
+
     return (
-      <div>
-        {this.state.createaccountDivOpen ? (
+      <div className="login-wrapper">
+        {this.state.loginDivOpen ? (
           <div className="user-loginform">
             {this.state.msg ? (
               <div className="login-alert">Alert! {this.state.msg}</div>

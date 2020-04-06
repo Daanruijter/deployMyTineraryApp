@@ -11,7 +11,7 @@
 .hamburger-menu-header {
 
 
-  background-color: darkred;
+  /* background-color: darkred; */
 
   width: 100%;
 
@@ -25,11 +25,13 @@
 .hamburger-grid-loggedin {
   display: grid;
   grid-template-columns: 16% 34% 50%;
+
 }
 
 .hamburger-grid {
   display: grid;
   grid-template-columns: 16% 34% 50%;
+  background-color: red !important;
 }
 
 

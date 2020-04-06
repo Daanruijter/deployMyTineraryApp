@@ -1,3 +1,10 @@
+.login-wrapper {
+    height: 100vh;
+    background-color: burlywood;
+    padding: 2%;
+    ;
+}
+
 .user-loginform {
     background-color: burlywood;
 

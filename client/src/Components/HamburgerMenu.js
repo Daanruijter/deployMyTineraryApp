@@ -76,6 +76,11 @@ class HamburgerMenu extends Component {
     // }
   };
 
+  changeLoginOpen = () => {
+    console.log("test");
+    this.setState({ loginOpen: false });
+  };
+
   toggleRegisterOpen = () => {
     // if (this.state.loginOpen !== true) {
     this.setState({
@@ -140,7 +145,11 @@ class HamburgerMenu extends Component {
             <div className="hamburger-menu-user-logo"></div>
             {/* login */}
             {!localStorage.getItem("token") ? (
-              <div>{this.state.loginOpen ? <Login></Login> : null}</div>
+              <div>
+                {this.state.loginOpen ? (
+                  <Login loginOpen={this.changeLoginOpen}></Login>
+                ) : null}
+              </div>
             ) : null}
             {/* register */}
             {!localStorage.getItem("token") ? (

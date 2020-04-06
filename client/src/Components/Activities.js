@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Comment from "./Comment";
 import axios from "axios";
-
+import { connect } from "react-redux";
 import "../CSS/Activities.css";
+import Login from "./Login";
+import homeIcon from "../Pictures/homeIcon.png";
 
-export default class Activities extends Component {
+class Activities extends Component {
   state = {
     carousselOpen: false,
     commentLists: [],
@@ -82,12 +84,26 @@ export default class Activities extends Component {
         {this.state.carousselOpen ? (
           <div className="activities-content">
             <div className="activities-flexer">{activities}</div>
-            <Comment
-              itineraryId={this.props.itinerary._id}
-              refreshFunction={this.updateComment}
-              commentLists={this.state.commentLists}
-              commentListsMongo={this.state.commentListsMongo}
-            ></Comment>
+            {this.props.state.auth.isAuthenticated ? (
+              <Comment
+                itineraryId={this.props.itinerary._id}
+                refreshFunction={this.updateComment}
+                commentLists={this.state.commentLists}
+                commentListsMongo={this.state.commentListsMongo}
+              ></Comment>
+            ) : (
+              //lead someone to the login page//
+              <div>
+                <Login></Login>
+                <div className="homeicon-container">
+                  <a href="/">
+                    <div className="home-flexer">
+                      <img className="homeIcon" src={homeIcon} alt="homeIcon" />
+                    </div>
+                  </a>
+                </div>
+              </div>
+            )}
             <p
               className="activities-close"
               key={this.props.index}
@@ -104,3 +120,9 @@ export default class Activities extends Component {
     );
   }
 }
+//get data from Redux//
+const mapStateToProps = state => {
+  return { state: state };
+};
+
+export default connect(mapStateToProps, null)(Activities);

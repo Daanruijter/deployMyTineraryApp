@@ -65,13 +65,13 @@ class App extends Component {
 
         {/* {localStorage.getItem("token") ? ( */}
         <main className="main-content">
-          <BrowserRouter>
-            {this.state.hamburgerMenuList ? (
-              <HamburgerMenuList />
-            ) : (
-              this.routesGenerator()
-            )}
-          </BrowserRouter>
+          {/* <BrowserRouter> */}
+          {this.state.hamburgerMenuList ? (
+            <HamburgerMenuList />
+          ) : (
+            this.routesGenerator()
+          )}
+          {/* </BrowserRouter> */}
         </main>
         {/* ) : null} */}
       </div>
