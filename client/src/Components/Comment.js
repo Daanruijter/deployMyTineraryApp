@@ -24,6 +24,7 @@ class Comment extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+
     let url = "";
 
     if (process.env.NODE_ENV === "development") {
@@ -59,7 +60,9 @@ class Comment extends Component {
         console.log(res);
         this.setState({ comment: "" });
         this.props.refreshFunction(res.data.result);
+        this.props.getCurrentCommentsAfterUpdate();
       })
+
       .catch((err) => {
         console.log(err.response.data);
       });
@@ -80,7 +83,12 @@ class Comment extends Component {
         </div>
         <div className="comment-content">{comment.content}</div>
         <div className="comment-delete">
-          <DeleteComments commentId={comment._id}></DeleteComments>
+          <DeleteComments
+            getCurrentCommentsAfterUpdate={
+              this.props.getCurrentCommentsAfterUpdate
+            }
+            commentId={comment._id}
+          ></DeleteComments>
         </div>
         <div className="comment-horizontal-line">
           <hr />

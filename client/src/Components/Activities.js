@@ -13,10 +13,27 @@ class Activities extends Component {
     commentListsMongo: [],
   };
 
-  openCaroussel = function () {
-    this.setState((prevState) => ({
-      carousselOpen: !prevState.carousselOpen,
-    }));
+  getCurrentCommentsAfterUpdate = () => {
+    let url = "";
+    let itineraryId = this.props.itineraryId;
+    // let headers = { "Content-Type": "application/json" };
+    let headers = {};
+    let body = { itineraryId };
+    // let body = { itineraryId: itineraryId };
+    if (process.env.NODE_ENV === "development") {
+      url = "http://localhost:5000/comments/getCommentsForASpecificItinerary";
+    }
+    if (process.env.NODE_ENV === "production") {
+      url =
+        "https://myitinerariestravelapp.herokuapp.com/comments/getCommentsForASpecificItinerary";
+    }
+    axios.post(url, body, headers).then((result) => {
+      this.setState({ commentListsMongo: result.data.result });
+    });
+  };
+
+  getCurrentComments() {
+    console.log("getcurrentcomments");
     if (this.state.carousselOpen == !true) {
       console.log("carousselopen");
       let url = "";
@@ -38,6 +55,13 @@ class Activities extends Component {
         this.setState({ commentListsMongo: result.data.result });
       });
     }
+  }
+
+  openCaroussel = function () {
+    this.setState((prevState) => ({
+      carousselOpen: !prevState.carousselOpen,
+    }));
+    this.getCurrentComments();
   };
 
   handleClick = () => {
@@ -90,6 +114,9 @@ class Activities extends Component {
                 refreshFunction={this.updateComment}
                 commentLists={this.state.commentLists}
                 commentListsMongo={this.state.commentListsMongo}
+                getCurrentCommentsAfterUpdate={
+                  this.getCurrentCommentsAfterUpdate
+                }
               ></Comment>
             ) : (
               <Comment

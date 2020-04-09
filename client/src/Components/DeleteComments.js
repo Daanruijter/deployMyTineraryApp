@@ -31,6 +31,7 @@ export default class Deletecomment extends Component {
       .post(url, body, config)
       .then((res) => {
         console.log(res);
+        this.props.getCurrentCommentsAfterUpdate();
       })
       .catch((err) => {
         console.log(err.response.data);
