@@ -8,7 +8,21 @@ const config = require("config");
 const jwt = require("jsonwebtoken");
 const auth = require("./middleware/authMiddleware");
 
-//get the current user with the token
+//delete a comment
+router.post("/deleteComment", (req, res) => {
+  let commentId = req.body.commentId;
+  console.log(commentId);
+
+  commentModel.findOneAndDelete(
+    { _id: commentId },
+    { $pull: { _id: commentId } },
+    (err, doc) => {
+      res.send({ doc, err });
+    }
+  );
+});
+
+//save a comment
 
 router.post("/saveComment", (req, res) => {
   console.log(req.body.postId);
@@ -16,12 +30,12 @@ router.post("/saveComment", (req, res) => {
   comment
     .save()
     .then(() => {
-      commentModel.find({ postId: req.body.postId }).then(result => {
+      commentModel.find({ postId: req.body.postId }).then((result) => {
         return res.status(200).json({ success: true, result });
       });
     })
 
-    .catch(err => {
+    .catch((err) => {
       return res.json({ succes: false, err });
     });
 });
@@ -31,10 +45,10 @@ router.post("/getCommentsForASpecificItinerary", (req, res) => {
   // res.send(req.body);
   commentModel
     .find({ postId: req.body.itineraryId })
-    .then(result => {
+    .then((result) => {
       return res.status(200).json({ success: true, result });
     })
-    .catch(err => {
+    .catch((err) => {
       return res.json({ succes: false, err });
     });
 });

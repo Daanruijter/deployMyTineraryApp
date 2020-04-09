@@ -7,6 +7,7 @@ import { deleteFavourites } from "../store/actions/favouriteActions";
 import { fetchFavourites } from "../store/actions/favouriteActions";
 import { decreaseItinerariesCount } from "../store/actions/itineraryActions";
 import { increaseItinerariesCount } from "../store/actions/itineraryActions";
+import Login from "./Login";
 
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ import { Link } from "react-router-dom";
 class FavouriteIcon extends Component {
   state = {
     itineraryFavourite: false,
-    favouritesArray: []
+    favouritesArray: [],
   };
 
   //dispatch an action that does this//
@@ -64,7 +65,7 @@ class FavouriteIcon extends Component {
       itineraryTitle,
       currentUserId,
       currentUserName,
-      isAuthenticated
+      isAuthenticated,
     };
 
     if (this.props.favouritesarray.includes(this.props.id)) {
@@ -80,7 +81,7 @@ class FavouriteIcon extends Component {
       this.setState({ itineraryFavourite: true });
       console.log(this.props.id, "is not in the array");
     }
-    setTimeout(function() {
+    setTimeout(function () {
       window.location.reload();
     }, 1000);
   }
@@ -89,7 +90,7 @@ class FavouriteIcon extends Component {
     return (
       <div>
         {this.props.state.auth.isAuthenticated ? (
-          <div onClick={e => this.makeFavourite(e)}>
+          <div onClick={(e) => this.makeFavourite(e)}>
             {this.state.itineraryFavourite ? (
               <div>
                 <MdFavorite
@@ -107,7 +108,7 @@ class FavouriteIcon extends Component {
             )}
           </div>
         ) : (
-          <div onClick={e => this.loginAlert(e)}>
+          <div onClick={(e) => this.loginAlert(e)}>
             <Link to={"/Login"}>
               <MdFavorite
                 size={36}
@@ -121,22 +122,23 @@ class FavouriteIcon extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    postFavourites: favouriteData => dispatch(postFavourites(favouriteData)),
-    decreaseItinerariesCount: itineraryId =>
+    postFavourites: (favouriteData) => dispatch(postFavourites(favouriteData)),
+    decreaseItinerariesCount: (itineraryId) =>
       dispatch(decreaseItinerariesCount(itineraryId)),
-    increaseItinerariesCount: itineraryId =>
+    increaseItinerariesCount: (itineraryId) =>
       dispatch(increaseItinerariesCount(itineraryId)),
-    deleteFavourites: favouriteData =>
+    deleteFavourites: (favouriteData) =>
       dispatch(deleteFavourites(favouriteData)),
-    fetchFavourites: favouriteData => dispatch(fetchFavourites(favouriteData))
+    fetchFavourites: (favouriteData) =>
+      dispatch(fetchFavourites(favouriteData)),
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    state: state
+    state: state,
   };
 };
 

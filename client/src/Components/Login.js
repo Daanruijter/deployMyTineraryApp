@@ -78,7 +78,6 @@ class Login extends Component {
     e.preventDefault();
 
     let user = this.state;
-    console.log(user);
 
     //attempt to login//
     this.props.login(user);
@@ -92,8 +91,11 @@ class Login extends Component {
     let password = this.props.password;
     let email = this.props.email;
     if (password !== "" && email !== "") {
+      console.log("logged in");
+      // this.setState({ loginDivOpen: false }, console.log("logindivclose"));
       this.props.clearErrors();
     }
+
     await this.props.sendUserToken();
     await this.props.fetchCurrentUser();
   };

@@ -87,7 +87,18 @@ class Comment extends Component {
         </div>
       </div>
     ));
-    console.log(commentListsDisplay);
+    let commentListsDisplayWithoutRemoveButton = commentLists.map((comment) => (
+      <div className="commentbox" key={comment._id}>
+        <div className="comment-username">
+          {comment.userData.firstName} {comment.userData.lastName}
+        </div>
+        <div className="comment-content">{comment.content}</div>
+        <div className="comment-delete"></div>
+        <div className="comment-horizontal-line">
+          <hr />
+        </div>
+      </div>
+    ));
 
     return (
       <div>
@@ -121,7 +132,9 @@ class Comment extends Component {
               &nbsp;login
             </p>
             <div className="comment-wrapper">
-              <div className="comment-flexer">{commentListsDisplay}</div>
+              <div className="comment-flexer">
+                {commentListsDisplayWithoutRemoveButton}
+              </div>
             </div>
             <hr></hr>
           </div>
