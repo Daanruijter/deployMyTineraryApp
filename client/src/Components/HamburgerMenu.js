@@ -17,7 +17,8 @@ import { fetchFavourites } from "../store/actions/favouriteActions";
 
 class HamburgerMenu extends Component {
   state = {
-    loginOpen: false
+    loginOpen: false,
+    registerOpen: false,
   };
 
   showUsername() {
@@ -71,9 +72,14 @@ class HamburgerMenu extends Component {
     // if (this.state.registerOpen !== true) {
     this.setState({
       loginOpen: !this.state.loginOpen,
-      registerOpen: false
+      registerOpen: false,
     });
     // }
+  };
+
+  changeRegisterOpen = () => {
+    console.log("registeropen");
+    this.setState({ registerOpen: false });
   };
 
   changeLoginOpen = () => {
@@ -85,7 +91,7 @@ class HamburgerMenu extends Component {
     // if (this.state.loginOpen !== true) {
     this.setState({
       registerOpen: !this.state.registerOpen,
-      loginOpen: false
+      loginOpen: false,
     });
     // }
   };
@@ -147,7 +153,7 @@ class HamburgerMenu extends Component {
             {!localStorage.getItem("token") ? (
               <div>
                 {this.state.loginOpen ? (
-                  <Login loginOpen={this.changeLoginOpen}></Login>
+                  <Login changeLoginOpen={this.changeLoginOpen}></Login>
                 ) : null}
               </div>
             ) : null}
@@ -155,7 +161,9 @@ class HamburgerMenu extends Component {
             {!localStorage.getItem("token") ? (
               <div>
                 {this.state.registerOpen ? (
-                  <CreateAccount></CreateAccount>
+                  <CreateAccount
+                    changeRegisterOpen={this.changeRegisterOpen}
+                  ></CreateAccount>
                 ) : null}
               </div>
             ) : null}
@@ -166,16 +174,16 @@ class HamburgerMenu extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     state: state,
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
+    error: state.error,
   };
 };
 
 export default connect(mapStateToProps, {
   fetchCurrentUser,
-  sendUserToken
+  sendUserToken,
   // fetchFavourites
 })(HamburgerMenu);

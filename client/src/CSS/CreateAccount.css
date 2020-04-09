@@ -1,6 +1,15 @@
+.register-form-flexer {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-right: 19%;
+
+}
+
 .user-registration-form {
     padding: 2%;
-    /* background-color:red; */
+
 
 }
 
@@ -8,6 +17,7 @@
 
 .user-registration-form {
     background-color: burlywood;
+    height: 100vh;
 
 }
 
@@ -40,6 +50,7 @@
     font-size: 150%;
     color: red;
     padding: 5%;
+    text-align: center;
 }
 
 .submitbutton {

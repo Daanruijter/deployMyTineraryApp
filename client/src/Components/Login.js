@@ -11,8 +11,6 @@ import { sendUserToken } from "../store/actions/authActions";
 import { fetchFavouritesPage } from "../store/actions/favouriteActions";
 import { Redirect } from "react-router-dom";
 
-import Landing from "./Landing";
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +18,7 @@ class Login extends Component {
       password: "",
       email: "",
       loginDivOpen: true,
-      redirect: null
+      redirect: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,24 +29,23 @@ class Login extends Component {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired
+    clearErrors: PropTypes.func.isRequired,
   };
 
   toggle = () => {
-    console.log(this.state);
     this.setState({
-      loginDivOpen: !this.state.loginDivOpen
+      loginDivOpen: !this.state.loginDivOpen,
     });
 
     if (this.state.loginDivOpen) {
-      console.log("werkt");
-      console.log(this.state.redirect);
       this.setState({ redirect: "/" });
 
       let that = this;
-      setTimeout(function() {
-        that.props.loginOpen();
-      }, 1000);
+      setTimeout(function () {
+        if (that.props.changeLoginOpen !== undefined) {
+          that.props.changeLoginOpen();
+        }
+      }, 500);
     }
   };
   componentDidMount() {
@@ -73,11 +70,11 @@ class Login extends Component {
 
   handleChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
 
     let user = this.state;
@@ -89,7 +86,7 @@ class Login extends Component {
       [e.target.name]: e.target.value,
 
       password: "",
-      email: ""
+      email: "",
     });
 
     let password = this.props.password;
@@ -114,38 +111,46 @@ class Login extends Component {
             {this.state.msg ? (
               <div className="login-alert">Alert! {this.state.msg}</div>
             ) : null}
+
             <form onSubmit={this.handleSubmit}>
-              <label>
-                <br />
-                Password:
-                <input
-                  name="password"
-                  placeholder="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={e => this.handleChange(e)}
-                />
-              </label>
-              <label>
-                <br />
-                E-mail:
-                <input
-                  name="email"
-                  placeholder="e-mail"
-                  type="text"
-                  value={this.state.email}
-                  onChange={e => this.handleChange(e)}
-                />
-              </label>
+              <div className="form-flexer">
+                <div className="form-password">
+                  <label>
+                    <br />
+                    Password:
+                    <input
+                      name="password"
+                      placeholder="password"
+                      type="password"
+                      value={this.state.password}
+                      onChange={(e) => this.handleChange(e)}
+                    />
+                  </label>
+                </div>
+                <div className="form-email">
+                  <label>
+                    <br />
+                    E-mail:
+                    <input
+                      name="email"
+                      placeholder="e-mail"
+                      type="text"
+                      value={this.state.email}
+                      onChange={(e) => this.handleChange(e)}
+                    />
+                  </label>
+                </div>
+              </div>
               <br />
               <div className="submitbutton">
                 <input
-                  onClick={e => this.handleSubmit(e)}
+                  onClick={(e) => this.handleSubmit(e)}
                   type="submit"
                   value="Please click after entering your data"
                 />
               </div>
             </form>
+
             <div className="close-login-field" onClick={this.toggle}>
               close
             </div>
@@ -156,11 +161,11 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     state: state,
     isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
+    error: state.error,
   };
 };
 
@@ -169,5 +174,5 @@ export default connect(mapStateToProps, {
   fetchCurrentUser,
   sendUserToken,
   clearErrors,
-  fetchFavouritesPage
+  fetchFavouritesPage,
 })(Login);
