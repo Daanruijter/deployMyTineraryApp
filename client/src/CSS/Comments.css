@@ -18,19 +18,62 @@
 }
 
 .commentbox {
-
+    display: grid;
+    grid-template-columns: 10% 85% 5%;
+    grid-template-rows: 65% 35%;
     color: blue;
+
 
     font-weight: lighter;
 
 }
 
-.comment-username {
-    color: blue;
-    font-weight: bold;
-    display: inline;
-}
-
 form {
     margin-top: 5%;
 }
+
+.comment-username {
+    color: blue;
+    font-weight: bold;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+
+}
+
+.comment-login-redirecter {
+    display: inline-block;
+    color: darkblue
+}
+
+
+.comment-content {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+
+}
+
+
+.comment-delete {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+}
+
+.comment-horizontal-line {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+
+/* grid-column-start: 1;
+grid-column-end: 2; */

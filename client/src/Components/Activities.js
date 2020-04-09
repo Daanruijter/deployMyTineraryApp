@@ -10,12 +10,12 @@ class Activities extends Component {
   state = {
     carousselOpen: false,
     commentLists: [],
-    commentListsMongo: []
+    commentListsMongo: [],
   };
 
-  openCaroussel = function() {
-    this.setState(prevState => ({
-      carousselOpen: !prevState.carousselOpen
+  openCaroussel = function () {
+    this.setState((prevState) => ({
+      carousselOpen: !prevState.carousselOpen,
     }));
     if (this.state.carousselOpen == !true) {
       console.log("carousselopen");
@@ -34,7 +34,7 @@ class Activities extends Component {
           "https://myitinerariestravelapp.herokuapp.com/comments/getCommentsForASpecificItinerary";
       }
 
-      axios.post(url, body, headers).then(result => {
+      axios.post(url, body, headers).then((result) => {
         this.setState({ commentListsMongo: result.data.result });
       });
     }
@@ -44,7 +44,7 @@ class Activities extends Component {
     this.openCaroussel();
   };
 
-  updateComment = newComment => {
+  updateComment = (newComment) => {
     let commentLists = this.state.commentLists;
     commentLists.push(newComment);
     console.log("updatecomment");
@@ -53,7 +53,7 @@ class Activities extends Component {
   };
 
   render() {
-    let activities = this.props.activities.map(item => (
+    let activities = this.props.activities.map((item) => (
       <div key={item.id} className="activity-box">
         <a href={item.url}>
           <div className="activities-image">
@@ -92,18 +92,22 @@ class Activities extends Component {
                 commentListsMongo={this.state.commentListsMongo}
               ></Comment>
             ) : (
-              //lead someone to the login page//
-              <div>
-                <Login></Login>
-                <div className="homeicon-container">
-                  <a href="/">
-                    <div className="home-flexer">
-                      <img className="homeIcon" src={homeIcon} alt="homeIcon" />
-                    </div>
-                  </a>
-                </div>
-              </div>
-            )}
+              <Comment
+                commentListsMongo={this.state.commentListsMongo}
+              ></Comment>
+            )
+            //lead someone to the login page//
+            // <div>
+            //   <Login></Login>
+            //   <div className="homeicon-container">
+            //     <a href="/">
+            //       <div className="home-flexer">
+            //         <img className="homeIcon" src={homeIcon} alt="homeIcon" />
+            //       </div>
+            //     </a>
+            //   </div>
+            // </div>
+            }
             <p
               className="activities-close"
               key={this.props.index}
@@ -121,7 +125,7 @@ class Activities extends Component {
   }
 }
 //get data from Redux//
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { state: state };
 };
 

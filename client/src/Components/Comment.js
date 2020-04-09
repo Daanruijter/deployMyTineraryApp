@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import "../CSS/Comments.css";
+import { Redirect } from "react-router-dom";
+import DeleteComments from "./DeleteComments";
 
 class Comment extends Component {
   state = {
-    comment: ""
+    comment: "",
+    redirect: null,
   };
 
-  handleChange = e => {
+  redirectToLogin = (e) => {
+    e.preventDefault();
+    this.setState({ redirect: "/Login" });
+  };
+
+  handleChange = (e) => {
     let comment = e.currentTarget.value;
     console.log(comment);
     this.setState({ comment: comment });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     let url = "";
 
@@ -34,25 +42,25 @@ class Comment extends Component {
 
     const config = {
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
 
     const body = JSON.stringify({
       content,
       writer,
       postId,
-      userData
+      userData,
     });
 
     axios
       .post(url, body, config)
-      .then(res => {
+      .then((res) => {
         console.log(res);
         this.setState({ comment: "" });
         this.props.refreshFunction(res.data.result);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.response.data);
       });
   };
@@ -60,45 +68,72 @@ class Comment extends Component {
   // let favouritesToShow = favourites.map((favouriteItinerary, index) => (
 
   render() {
+    if (this.state.redirect !== null) {
+      return <Redirect to={this.state.redirect} />;
+    }
     let commentLists = this.props.commentListsMongo;
-    let commentListsDisplay = commentLists.map(comment => (
+
+    let commentListsDisplay = commentLists.map((comment) => (
       <div className="commentbox" key={comment._id}>
-        <p className="comment-username">
+        <div className="comment-username">
           {comment.userData.firstName} {comment.userData.lastName}
-          {":"}
-        </p>{" "}
-        {comment.content}
-        <hr />
+        </div>
+        <div className="comment-content">{comment.content}</div>
+        <div className="comment-delete">
+          <DeleteComments commentId={comment._id}></DeleteComments>
+        </div>
+        <div className="comment-horizontal-line">
+          <hr />
+        </div>
       </div>
     ));
     console.log(commentListsDisplay);
 
     return (
-      <div className="comment-all-wrapper">
-        <form onSubmit={this.onSubmit}>
-          <label>
-            <input
-              type="text"
-              onChange={e => this.handleChange(e)}
-              value={this.state.comment}
-              placeholder="write some comments"
-            ></input>
-            <button>Submit</button>
-          </label>
-        </form>
-        <p>comments</p>
-        <div className="comment-wrapper">
-          <div className="comment-flexer">{commentListsDisplay}</div>
-        </div>
-        <hr></hr>
+      <div>
+        {" "}
+        {this.props.state.auth.isAuthenticated ? (
+          <div className="comment-all-wrapper">
+            <form onSubmit={this.onSubmit}>
+              <label>
+                <input
+                  type="text"
+                  onChange={(e) => this.handleChange(e)}
+                  value={this.state.comment}
+                  placeholder="write some comments"
+                ></input>
+                <button>Submit</button>
+              </label>
+            </form>
+            <p>comments</p>
+            <div className="comment-wrapper">
+              <div className="comment-flexer">{commentListsDisplay}</div>
+            </div>
+            <hr></hr>
+          </div>
+        ) : (
+          <div className="comment-all-wrapper">
+            To write a comment, please
+            <p
+              className="comment-login-redirecter"
+              onClick={this.redirectToLogin}
+            >
+              &nbsp;login
+            </p>
+            <div className="comment-wrapper">
+              <div className="comment-flexer">{commentListsDisplay}</div>
+            </div>
+            <hr></hr>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    state: state
+    state: state,
   };
 };
 export default connect(mapStateToProps, null)(Comment);
