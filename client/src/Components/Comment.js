@@ -4,6 +4,7 @@ import axios from "axios";
 import "../CSS/Comments.css";
 import { Redirect } from "react-router-dom";
 import DeleteComments from "./DeleteComments";
+import { sendCommentsPath } from "../store/actions/commentActions";
 
 class Comment extends Component {
   state = {
@@ -11,9 +12,16 @@ class Comment extends Component {
     redirect: null,
   };
 
+  // redirectToPreviousPage() {
+  //   console.log("redirecttopreviouspage");
+  // }
+
   redirectToLogin = (e) => {
     e.preventDefault();
-    this.setState({ redirect: "/Login" });
+
+    this.setState({ redirect: "/Login/" });
+    let itineraryPathName = this.props.itineraryPathName;
+    this.props.sendCommentsPath(itineraryPathName);
   };
 
   handleChange = (e) => {
@@ -157,6 +165,12 @@ const mapStateToProps = (state) => {
     state: state,
   };
 };
-export default connect(mapStateToProps, null)(Comment);
 
-// mapDispatchToProps
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendCommentsPath: (itineraryPathName) =>
+      dispatch(sendCommentsPath(itineraryPathName)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comment);

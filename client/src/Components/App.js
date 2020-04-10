@@ -30,11 +30,11 @@ class App extends Component {
   }
 
   state = {
-    hamburgerMenuList: false
+    hamburgerMenuList: false,
   };
 
-  drawerToggleClickHandler = e => {
-    this.setState(prevState => {
+  drawerToggleClickHandler = (e) => {
+    this.setState((prevState) => {
       return { hamburgerMenuList: !prevState.hamburgerMenuList };
     });
   };
@@ -46,12 +46,15 @@ class App extends Component {
   routesGenerator() {
     return (
       <Switch>
-        <Route exact path="/" component={Landing} />
+        <Route exact path="/" render={(props) => <Landing {...props} />} />
         <Route exact path="/Cities" component={Cities} />
         <Route exact path="/Create-account" component={CreateAccount} />
-        <Route exact path="/Login" component={Login} />
+        <Route exact path="/Login" render={(props) => <Login {...props} />} />
         <Route exact path="/Favourites/:cityName" component={Favourites} />
-        <Route path="/itinerary/:name/:cityName" component={Itinerary} />
+        <Route
+          path="/itinerary/:name/:cityName"
+          render={(props) => <Itinerary {...props} />}
+        />
       </Switch>
     );
   }
@@ -78,9 +81,9 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    state: state
+    state: state,
   };
 };
 export default connect(mapStateToProps)(App);

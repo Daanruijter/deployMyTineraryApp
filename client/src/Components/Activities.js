@@ -117,10 +117,12 @@ class Activities extends Component {
                 getCurrentCommentsAfterUpdate={
                   this.getCurrentCommentsAfterUpdate
                 }
+                itineraryPathName={this.props.itineraryPathName}
               ></Comment>
             ) : (
               <Comment
                 commentListsMongo={this.state.commentListsMongo}
+                itineraryPathName={this.props.itineraryPathName}
               ></Comment>
             )
             //lead someone to the login page//

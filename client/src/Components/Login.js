@@ -10,6 +10,7 @@ import { fetchCurrentUser } from "../store/actions/authActions";
 import { sendUserToken } from "../store/actions/authActions";
 import { fetchFavouritesPage } from "../store/actions/favouriteActions";
 import { Redirect } from "react-router-dom";
+import { redirectToPreviousPage } from "./Comment";
 
 class Login extends Component {
   constructor(props) {
