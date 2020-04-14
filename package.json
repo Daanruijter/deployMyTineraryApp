@@ -23,6 +23,7 @@
     "http-proxy-middleware": "^1.0.3",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
+    "moment": "^2.24.0",
     "mongoose": "^5.8.10",
     "nodemon": "^2.0.2",
     "redux-devtools-extension": "^2.13.8"

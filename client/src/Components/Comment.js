@@ -5,16 +5,13 @@ import "../CSS/Comments.css";
 import { Redirect } from "react-router-dom";
 import DeleteComments from "./DeleteComments";
 import { sendCommentsPath } from "../store/actions/commentActions";
+import { register } from "../store/actions/authActions";
 
 class Comment extends Component {
   state = {
     comment: "",
     redirect: null,
   };
-
-  // redirectToPreviousPage() {
-  //   console.log("redirecttopreviouspage");
-  // }
 
   redirectToLogin = (e) => {
     e.preventDefault();
@@ -26,7 +23,7 @@ class Comment extends Component {
 
   handleChange = (e) => {
     let comment = e.currentTarget.value;
-    console.log(comment);
+
     this.setState({ comment: comment });
   };
 
@@ -41,13 +38,33 @@ class Comment extends Component {
     if (process.env.NODE_ENV === "production") {
       url = "https://myitinerariestravelapp.herokuapp.com/comments/saveComment";
     }
+    let date = new Date();
+    let day = date.getDate();
+    let month = new Array();
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+    let monthText = month[date.getMonth()];
+    let year = date.getFullYear();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+
+    let commentMoment =
+      day + " " + monthText + " " + year + " " + hours + ":" + minutes;
 
     let content = this.state.comment;
     let writer = this.props.state.auth.user;
     let postId = this.props.itineraryId;
     let userData = this.props.state.auth.user;
-
-    console.log(content, writer, postId);
 
     const config = {
       headers: {
@@ -60,12 +77,12 @@ class Comment extends Component {
       writer,
       postId,
       userData,
+      commentMoment,
     });
 
     axios
       .post(url, body, config)
       .then((res) => {
-        console.log(res);
         this.setState({ comment: "" });
         this.props.refreshFunction(res.data.result);
         this.props.getCurrentCommentsAfterUpdate();
@@ -87,9 +104,11 @@ class Comment extends Component {
     let commentListsDisplay = commentLists.map((comment) => (
       <div className="commentbox" key={comment._id}>
         <div className="comment-username">
-          {comment.userData.firstName} {comment.userData.lastName}
+          {comment.userData.firstName} {comment.userData.lastName + ":"}{" "}
+          {comment.commentMoment}
         </div>
         <div className="comment-content">{comment.content}</div>
+
         <div className="comment-delete">
           <DeleteComments
             getCurrentCommentsAfterUpdate={
@@ -106,7 +125,8 @@ class Comment extends Component {
     let commentListsDisplayWithoutRemoveButton = commentLists.map((comment) => (
       <div className="commentbox" key={comment._id}>
         <div className="comment-username">
-          {comment.userData.firstName} {comment.userData.lastName}
+          {comment.userData.firstName} {comment.userData.lastName + ":"}{" "}
+          {comment.commentMoment}
         </div>
         <div className="comment-content">{comment.content}</div>
         <div className="comment-delete"></div>

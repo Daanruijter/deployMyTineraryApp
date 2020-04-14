@@ -15,6 +15,7 @@ class Activities extends Component {
   };
 
   componentDidMount() {
+    this.getCurrentComments();
     let openedCarousselBeforeLogin = localStorage.getItem(
       "activityCarousselOpenBeforeLogin"
     );
@@ -149,6 +150,7 @@ class Activities extends Component {
                   getCurrentCommentsAfterUpdate={
                     this.getCurrentCommentsAfterUpdate
                   }
+                  getCurrentComments={this.getCurrentComments}
                   itineraryPathName={this.props.itineraryPathName}
                 ></Comment>
               ) : (

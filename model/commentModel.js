@@ -5,25 +5,28 @@ const commentSchema = mongoose.Schema(
   {
     writer: {
       type: Schema.Types.ObjectId,
-      ref: "User"
+      ref: "User",
       //not sure whether I need this and I think the reference is not correct//
     },
     postId: {
       type: Schema.Types.ObjectId,
-      ref: "Video"
+      ref: "Video",
       //not sure whether I need this and I think the reference is not correct//
     },
     responseTo: {
       type: Schema.Types.ObjectId,
-      ref: "User"
+      ref: "User",
       //not sure whether I need this and I think the reference is not correct//
     },
     content: {
-      type: String
+      type: String,
     },
     userData: {
-      type: Object
-    }
+      type: Object,
+    },
+    commentMoment: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
