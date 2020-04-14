@@ -14,6 +14,24 @@ class Activities extends Component {
     carousselOpenedId: "",
   };
 
+  componentDidMount() {
+    let openedCarousselBeforeLogin = localStorage.getItem(
+      "activityCarousselOpenBeforeLogin"
+    );
+    if (
+      this.props.itineraryId.includes(openedCarousselBeforeLogin) &&
+      openedCarousselBeforeLogin !== ""
+    ) {
+      this.setCarousselOpenToTrueAfterLogin();
+      console.log(openedCarousselBeforeLogin, "opennnn");
+    }
+    console.log("activities did mount");
+  }
+
+  setCarousselOpenToTrueAfterLogin = () => {
+    this.setState({ carousselOpen: true });
+  };
+
   getCurrentCommentsAfterUpdate = () => {
     let url = "";
     let itineraryId = this.props.itineraryId;
@@ -63,10 +81,18 @@ class Activities extends Component {
       carousselOpen: !prevState.carousselOpen,
     }));
     this.getCurrentComments();
+    let activityCarousselOpenBeforeLogin = this.props.itinerary._id;
+    localStorage.setItem(
+      "activityCarousselOpenBeforeLogin",
+      activityCarousselOpenBeforeLogin
+    );
     this.setState({ carousselOpenedId: this.props.itinerary._id });
     // if (this.props.state.auth.isAuthenticated) {
     //   this.setState({ carousselOpen: true });
     // }
+
+    if (this.state.carousselOpen)
+      localStorage.setItem("activityCarousselOpenBeforeLogin", "");
   };
 
   handleClick = () => {
