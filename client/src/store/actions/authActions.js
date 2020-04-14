@@ -1,5 +1,6 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
+import { fetchFavourites } from "./favouriteActions";
 
 import {
   USER_LOADED,
@@ -14,7 +15,7 @@ import {
   FETCH_CURRENT_USER_SUCCESS,
   FETCH_CURRENT_USER_FAILURE,
   SEND_USER_TOKEN_FAILURE,
-  SEND_USER_TOKEN_SUCCESS
+  SEND_USER_TOKEN_SUCCESS,
 } from "./userTypes";
 
 //check token and load user/
@@ -33,34 +34,30 @@ export const loadUser = () => (dispatch, getState) => {
 
   axios
     .get(url, tokenConfig(getState))
-    .then(res =>
+    .then((res) =>
       dispatch({
         type: USER_LOADED,
-        payload: res.data
+        payload: res.data,
       })
     )
-    .catch(err => {
+    .catch((err) => {
       dispatch(returnErrors(err.data, err.status));
 
       dispatch({
-        type: AUTH_ERROR
+        type: AUTH_ERROR,
       });
     });
 };
 
 //Register User
-export const register = ({
-  firstName,
-  lastName,
-  email,
-  password,
-  picture
-}) => dispatch => {
+export const register = ({ firstName, lastName, email, password, picture }) => (
+  dispatch
+) => {
   //headers
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   //request body//
@@ -69,7 +66,7 @@ export const register = ({
     lastName,
     email,
     password,
-    picture
+    picture,
   });
 
   let url = "";
@@ -84,36 +81,36 @@ export const register = ({
   axios
     .post(url, body, config)
 
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
       dispatch(fetchCurrentUser());
     })
 
-    .catch(err => {
+    .catch((err) => {
       dispatch(
         returnErrors(err.response.data, err.response.status, "REGISTER_FAIL")
       );
       console.log(err.response);
       dispatch({
-        type: REGISTER_FAIL
+        type: REGISTER_FAIL,
       });
     });
 };
 
 //setup config/headers and token
 
-export const tokenConfig = getState => {
+export const tokenConfig = (getState) => {
   //Get token from localStorage
   const token = getState().auth.token;
 
   // Headers;
   const config = {
     headers: {
-      "Content-type": "application/json"
-    }
+      "Content-type": "application/json",
+    },
   };
 
   //if token, add to headers
@@ -127,25 +124,27 @@ export const tokenConfig = getState => {
 //logout user
 export const logout = () => {
   return {
-    type: LOGOUT_SUCCESS
+    type: LOGOUT_SUCCESS,
   };
 };
 
 //login user
 //Register User
-export const login = ({ email, password, firstName, lastName }) => dispatch => {
+export const login = ({ email, password, firstName, lastName }) => (
+  dispatch
+) => {
   //headers
   const config = {
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   };
 
   const body = JSON.stringify({
     email,
     password,
     firstName,
-    lastName
+    lastName,
   });
 
   let url = "";
@@ -160,22 +159,23 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
   axios
     .post(url, body, config)
 
-    .then(res => {
+    .then((res) => {
       console.log(res);
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
       dispatch(fetchCurrentUser());
+      dispatch(fetchFavourites());
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err.response.data);
       dispatch(
         returnErrors(err.response.data, err.response.status, "LOGIN_FAIL")
       );
 
       dispatch({
-        type: LOGIN_FAIL
+        type: LOGIN_FAIL,
       });
     });
 };
@@ -183,26 +183,26 @@ export const login = ({ email, password, firstName, lastName }) => dispatch => {
 //fetch data//
 export const fetchCurrentUserRequest = () => {
   return {
-    type: FETCH_CURRENT_USER_REQUEST
+    type: FETCH_CURRENT_USER_REQUEST,
   };
 };
 
-export const fetchCurrentUserSuccess = currentUser => {
+export const fetchCurrentUserSuccess = (currentUser) => {
   return {
     type: FETCH_CURRENT_USER_SUCCESS,
-    payload: currentUser
+    payload: currentUser,
   };
 };
 
-export const fetchCurrentUserFailure = error => {
+export const fetchCurrentUserFailure = (error) => {
   return {
     type: FETCH_CURRENT_USER_FAILURE,
-    payload: error
+    payload: error,
   };
 };
 
 export const fetchCurrentUser = () => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(fetchCurrentUserRequest());
 
     let url = "";
@@ -218,19 +218,19 @@ export const fetchCurrentUser = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "x-auth-token": localStorage.getItem("token")
-      }
+        "x-auth-token": localStorage.getItem("token"),
+      },
     })
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         const currentUser = data;
         // console.log(data);
 
         dispatch(fetchCurrentUserSuccess(currentUser));
       })
-      .catch(error => {
+      .catch((error) => {
         const errorMessage = error.message;
         dispatch(fetchCurrentUserFailure(errorMessage));
       });
@@ -238,10 +238,10 @@ export const fetchCurrentUser = () => {
 };
 
 //Send user token
-export const sendUserToken = () => dispatch => {
+export const sendUserToken = () => (dispatch) => {
   let headers = {
     "Content-Type": "application/x-www-form-urlencoded",
-    "x-auth-token": localStorage.getItem("token")
+    "x-auth-token": localStorage.getItem("token"),
   };
 
   let url = "";
@@ -259,16 +259,16 @@ export const sendUserToken = () => dispatch => {
       {},
       { headers }
     )
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: SEND_USER_TOKEN_SUCCESS,
-        payload: res.data
+        payload: res.data,
       });
     })
 
-    .catch(err => {
+    .catch((err) => {
       dispatch({
-        type: SEND_USER_TOKEN_FAILURE
+        type: SEND_USER_TOKEN_FAILURE,
       });
 
       console.log(err.response);

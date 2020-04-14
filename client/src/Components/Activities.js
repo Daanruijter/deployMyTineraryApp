@@ -11,6 +11,7 @@ class Activities extends Component {
     carousselOpen: false,
     commentLists: [],
     commentListsMongo: [],
+    carousselOpenedId: "",
   };
 
   getCurrentCommentsAfterUpdate = () => {
@@ -62,6 +63,10 @@ class Activities extends Component {
       carousselOpen: !prevState.carousselOpen,
     }));
     this.getCurrentComments();
+    this.setState({ carousselOpenedId: this.props.itinerary._id });
+    // if (this.props.state.auth.isAuthenticated) {
+    //   this.setState({ carousselOpen: true });
+    // }
   };
 
   handleClick = () => {
@@ -108,34 +113,35 @@ class Activities extends Component {
         {this.state.carousselOpen ? (
           <div className="activities-content">
             <div className="activities-flexer">{activities}</div>
-            {this.props.state.auth.isAuthenticated ? (
-              <Comment
-                itineraryId={this.props.itinerary._id}
-                refreshFunction={this.updateComment}
-                commentLists={this.state.commentLists}
-                commentListsMongo={this.state.commentListsMongo}
-                getCurrentCommentsAfterUpdate={
-                  this.getCurrentCommentsAfterUpdate
-                }
-                itineraryPathName={this.props.itineraryPathName}
-              ></Comment>
-            ) : (
-              <Comment
-                commentListsMongo={this.state.commentListsMongo}
-                itineraryPathName={this.props.itineraryPathName}
-              ></Comment>
-            )
-            //lead someone to the login page//
-            // <div>
-            //   <Login></Login>
-            //   <div className="homeicon-container">
-            //     <a href="/">
-            //       <div className="home-flexer">
-            //         <img className="homeIcon" src={homeIcon} alt="homeIcon" />
-            //       </div>
-            //     </a>
-            //   </div>
-            // </div>
+            {
+              this.props.state.auth.isAuthenticated ? (
+                <Comment
+                  itineraryId={this.props.itinerary._id}
+                  refreshFunction={this.updateComment}
+                  commentLists={this.state.commentLists}
+                  commentListsMongo={this.state.commentListsMongo}
+                  getCurrentCommentsAfterUpdate={
+                    this.getCurrentCommentsAfterUpdate
+                  }
+                  itineraryPathName={this.props.itineraryPathName}
+                ></Comment>
+              ) : (
+                <Comment
+                  commentListsMongo={this.state.commentListsMongo}
+                  itineraryPathName={this.props.itineraryPathName}
+                ></Comment>
+              )
+              //lead someone to the login page//
+              // <div>
+              //   <Login></Login>
+              //   <div className="homeicon-container">
+              //     <a href="/">
+              //       <div className="home-flexer">
+              //         <img className="homeIcon" src={homeIcon} alt="homeIcon" />
+              //       </div>
+              //     </a>
+              //   </div>
+              // </div>
             }
             <p
               className="activities-close"

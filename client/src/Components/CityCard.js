@@ -8,12 +8,15 @@ import "../CSS/CityCard.css";
 import { sendCityName } from "../store/actions/cityActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { sendCommentsPath } from "../store/actions/commentActions";
 
-const CityCard = props => {
-  const handleClick = e => {
+const CityCard = (props) => {
+  const handleClick = (e) => {
     let cityName = props.cityname;
 
     props.sendCityName(cityName);
+    let itineraryPathName = `/itinerary/${props.id}/${props.cityname}`;
+    props.sendCommentsPath(itineraryPathName);
   };
 
   return (
@@ -43,14 +46,16 @@ const CityCard = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {};
 };
 
 //fires actions to Redux
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    sendCityName: cityName => dispatch(sendCityName(cityName))
+    sendCityName: (cityName) => dispatch(sendCityName(cityName)),
+    sendCommentsPath: (itineraryPathName) =>
+      dispatch(sendCommentsPath(itineraryPathName)),
   };
 };
 

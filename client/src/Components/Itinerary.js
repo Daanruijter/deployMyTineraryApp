@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { fetchFavouritesPage } from "../store/actions/favouriteActions";
 import homeIcon from "../Pictures/homeIcon.png";
 import { fetchFavourites } from "../store/actions/favouriteActions";
+import { sendCommentsPath } from "../store/actions/commentActions";
 
 class Itinerary extends Component {
   state = {
@@ -265,6 +266,14 @@ class Itinerary extends Component {
     ],
   };
 
+  redirecter = (e) => {
+    console.log("redirecter");
+    e.preventDefault();
+    let itineraryPathName = this.props.location.pathname;
+
+    this.props.sendCommentsPath(itineraryPathName);
+  };
+
   componentDidMount() {
     let cityItinerariesToBeFetched = this.props.match.params.name;
 
@@ -330,6 +339,7 @@ class Itinerary extends Component {
               </a>
               <div className="itinerary-favourite">
                 <FavouriteIcon
+                  itineraryPathName={this.props.location.pathname}
                   title={itinerary.title}
                   id={itinerary._id}
                   favouritesarray={
@@ -370,7 +380,7 @@ class Itinerary extends Component {
                 </Link>
               </div>
             ) : (
-              <div>
+              <div onClick={(e) => this.redirecter(e)}>
                 <Link to={"/Login"}>
                   To see your favourites page please login
                 </Link>
@@ -418,6 +428,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(fetchFavourites(favouriteData)),
     fetchFavouritesPage: (favouritesArray) =>
       dispatch(fetchFavouritesPage(favouritesArray)),
+    sendCommentsPath: (itineraryPathName) =>
+      dispatch(sendCommentsPath(itineraryPathName)),
   };
 };
 

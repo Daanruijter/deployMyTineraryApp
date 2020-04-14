@@ -7,6 +7,7 @@ import { deleteFavourites } from "../store/actions/favouriteActions";
 import { fetchFavourites } from "../store/actions/favouriteActions";
 import { decreaseItinerariesCount } from "../store/actions/itineraryActions";
 import { increaseItinerariesCount } from "../store/actions/itineraryActions";
+import { sendCommentsPath } from "../store/actions/commentActions";
 import Login from "./Login";
 
 import jwt_decode from "jwt-decode";
@@ -37,6 +38,9 @@ class FavouriteIcon extends Component {
     }
   }
   loginAlert() {
+    let itineraryPathName = this.props.itineraryPathName;
+    this.props.sendCommentsPath(itineraryPathName);
+
     alert("Please login to add to favourites");
   }
 
@@ -133,6 +137,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(deleteFavourites(favouriteData)),
     fetchFavourites: (favouriteData) =>
       dispatch(fetchFavourites(favouriteData)),
+    sendCommentsPath: (itineraryPathName) =>
+      dispatch(sendCommentsPath(itineraryPathName)),
   };
 };
 

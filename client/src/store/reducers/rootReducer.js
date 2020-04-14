@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   error: errorReducer,
   auth: authReducer,
   favourites: favouritesReducer,
-  pathnames: commentReducer,
+  commentsPath: commentReducer,
 });
 
 export default rootReducer;

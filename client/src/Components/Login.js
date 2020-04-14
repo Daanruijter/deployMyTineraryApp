@@ -10,7 +10,6 @@ import { fetchCurrentUser } from "../store/actions/authActions";
 import { sendUserToken } from "../store/actions/authActions";
 import { fetchFavouritesPage } from "../store/actions/favouriteActions";
 import { Redirect } from "react-router-dom";
-import { redirectToPreviousPage } from "./Comment";
 
 class Login extends Component {
   constructor(props) {
@@ -32,6 +31,10 @@ class Login extends Component {
     login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
+
+  // componentDidMount() {
+  //   console.log(this.props);
+  // }
 
   toggle = () => {
     this.setState({
@@ -94,6 +97,8 @@ class Login extends Component {
     if (password !== "" && email !== "") {
       console.log("logged in");
       // this.setState({ loginDivOpen: false }, console.log("logindivclose"));
+      console.log(this.props.state.commentsPath.commentsPath);
+      this.setState({ redirect: this.props.state.commentsPath.commentsPath });
       this.props.clearErrors();
     }
 
@@ -177,5 +182,4 @@ export default connect(mapStateToProps, {
   fetchCurrentUser,
   sendUserToken,
   clearErrors,
-  fetchFavouritesPage,
 })(Login);
