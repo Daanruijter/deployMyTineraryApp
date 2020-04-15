@@ -11,6 +11,32 @@ class Comment extends Component {
   state = {
     comment: "",
     redirect: null,
+    currentUserMatch: "",
+  };
+
+  componentDidMount() {
+    this.setStateOf();
+  }
+
+  setStateOf = () => {
+    let that = this;
+    setTimeout(function () {
+      if (
+        that.props.state.auth.currentUser !== null &&
+        that.props.commentListsMongo[0] !== undefined
+      ) {
+        console.log(
+          that.props.state.auth.currentUser.firstName +
+            that.props.state.auth.currentUser.lastName,
+          that.props.commentListsMongo
+        );
+        that.setState({
+          currentUserMatch: that.props.state.auth.currentUser._id.includes(
+            that.props.commentListsMongo[0].writer
+          ),
+        });
+      }
+    }, 5000);
   };
 
   redirectToLogin = (e) => {
@@ -96,9 +122,12 @@ class Comment extends Component {
   // let favouritesToShow = favourites.map((favouriteItinerary, index) => (
 
   render() {
-    if (this.state.redirect !== null) {
-      return <Redirect to={this.state.redirect} />;
-    }
+    //   console.log(this.props.state.auth.currentUser._id);
+    //   console.log(this.props.commentListsMongo[0].writer);
+    // }
+    // if (this.state.redirect !== null) {
+    //   return <Redirect to={this.state.redirect} />;
+    // }
     let commentLists = this.props.commentListsMongo;
 
     let commentListsDisplay = commentLists.map((comment) => (
@@ -108,15 +137,16 @@ class Comment extends Component {
           {comment.commentMoment}
         </div>
         <div className="comment-content">{comment.content}</div>
-
-        <div className="comment-delete">
-          <DeleteComments
-            getCurrentCommentsAfterUpdate={
-              this.props.getCurrentCommentsAfterUpdate
-            }
-            commentId={comment._id}
-          ></DeleteComments>
-        </div>
+        {comment.writer.includes(this.props.state.auth.currentUser._id) ? (
+          <div className="comment-delete">
+            <DeleteComments
+              getCurrentCommentsAfterUpdate={
+                this.props.getCurrentCommentsAfterUpdate
+              }
+              commentId={comment._id}
+            ></DeleteComments>
+          </div>
+        ) : null}
         <div className="comment-horizontal-line">
           <hr />
         </div>
