@@ -7,11 +7,11 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
-
+const cors = require("cors");
+app.use(cors());
 const port = process.env.PORT || 5000;
 
 const bodyParser = require("body-parser");
-const cors = require("cors");
 
 // const db = config.get("mongoURI");
 
@@ -27,10 +27,9 @@ const path = require("path");
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true
+    extended: true,
   })
 );
-app.use(cors());
 
 app.listen(port, () => {
   console.log("Server is running on " + port + "port");
@@ -41,10 +40,10 @@ mongoose
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
-    dbName: "itinerary-app"
+    dbName: "itinerary-app",
   })
   .then(() => console.log("Connection to Mongo DB established"))
-  .catch(err => console.log(err + "There is no connection"));
+  .catch((err) => console.log(err + "There is no connection"));
 
 mongoose.set("debug", true);
 

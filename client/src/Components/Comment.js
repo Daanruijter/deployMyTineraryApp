@@ -14,31 +14,6 @@ class Comment extends Component {
     currentUserMatch: "",
   };
 
-  componentDidMount() {
-    this.setStateOf();
-  }
-
-  setStateOf = () => {
-    let that = this;
-    setTimeout(function () {
-      if (
-        that.props.state.auth.currentUser !== null &&
-        that.props.commentListsMongo[0] !== undefined
-      ) {
-        console.log(
-          that.props.state.auth.currentUser.firstName +
-            that.props.state.auth.currentUser.lastName,
-          that.props.commentListsMongo
-        );
-        that.setState({
-          currentUserMatch: that.props.state.auth.currentUser._id.includes(
-            that.props.commentListsMongo[0].writer
-          ),
-        });
-      }
-    }, 5000);
-  };
-
   redirectToLogin = (e) => {
     e.preventDefault();
 

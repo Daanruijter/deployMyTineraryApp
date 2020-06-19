@@ -133,10 +133,11 @@ class HamburgerMenu extends Component {
                 >
                   register
                 </div>
-                <div onClick={this.toggleLogin} className="hamburger-login">
-                  login
-                </div>
               </div>
+              <div onClick={this.toggleLogin} className="hamburger-login">
+                login
+              </div>
+
               <div className="hamburger-icon">
                 <div className="hamburger-icon-flexer">
                   <DrawerToggleButton

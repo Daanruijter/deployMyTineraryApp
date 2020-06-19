@@ -7,11 +7,11 @@ import "../CSS/Landing.css";
 import MYtineraryLogo from "../Pictures/MYtineraryLogo.png";
 import startBrowsing from "../Pictures/startBrowsing.png";
 
-const Landing = props => {
+const Landing = (props) => {
   return (
     <div className="landing-page">
       <img className="logo" src={MYtineraryLogo} alt="MYtineraryLogo" />
-      <p>
+      <p className="perfect-trip">
         Find your perfect trip, designed by insiders who know and love their
         cities.{" "}
       </p>
@@ -26,7 +26,7 @@ const Landing = props => {
           />
         </a>
       </div>
-      <p>Want to build your own MYtinerary?</p>
+      <p className="own-mytinerary">Want to build your own MYtinerary?</p>
     </div>
   );
 };
