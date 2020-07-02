@@ -150,26 +150,26 @@ class HamburgerMenu extends Component {
 
           <div className="hamburger-menu-container">
             <div className="hamburger-menu-user-logo"></div>
-            {/* login */}
-            {!localStorage.getItem("token") ? (
-              <div>
-                {this.state.loginOpen ? (
-                  <Login changeLoginOpen={this.changeLoginOpen}></Login>
-                ) : null}
-              </div>
-            ) : null}
-            {/* register */}
-            {!localStorage.getItem("token") ? (
-              <div>
-                {this.state.registerOpen ? (
-                  <CreateAccount
-                    changeRegisterOpen={this.changeRegisterOpen}
-                  ></CreateAccount>
-                ) : null}
-              </div>
+          </div>
+        </nav>{" "}
+        {/* login */}
+        {!localStorage.getItem("token") ? (
+          <div>
+            {this.state.loginOpen ? (
+              <Login changeLoginOpen={this.changeLoginOpen}></Login>
             ) : null}
           </div>
-        </nav>
+        ) : null}
+        {/* register */}
+        {!localStorage.getItem("token") ? (
+          <div>
+            {this.state.registerOpen ? (
+              <CreateAccount
+                changeRegisterOpen={this.changeRegisterOpen}
+              ></CreateAccount>
+            ) : null}
+          </div>
+        ) : null}
       </header>
     );
   }

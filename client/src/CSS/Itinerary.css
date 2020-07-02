@@ -1,171 +1,363 @@
-.available-mytineraries {
-  text-align: center;
-  color: red;
+@media only screen and (min-width: 768px) {
 
-  font-size: 110%;
-  font-weight: bold;
+  .available-mytineraries {
+    text-align: center;
+    color: red;
+
+    font-size: 125%;
+    font-weight: bold;
+  }
+
+
+  .itinerary-page-container {
+    width: 100%;
+    margin-top: 5%;
+  }
+
+  .itinerary-cards-gridmaker {
+
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 19% 27% 27% 27%;
+
+    grid-template-rows: 5fr, 5fr, 5fr, 37fr, 5fr, 7fr;
+
+    height: 100%;
+    width: 98%;
+    border-style: solid;
+    border-color: firebrick;
+    border-radius: 5%;
+    margin-bottom: 1%;
+  }
+
+
+
+  .itinerary-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .itinerary-card-flexer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .itinerary-cards {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows: 85% 15%;
+  }
+
+  .itinerary-cards-container {
+    min-height: 547px;
+    width: 24%;
+    display: flex;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+
+  }
+
+  .itinenary-title {
+    font-weight: bold;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    padding: 5%;
+  }
+
+  .itinenary-rating {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding: 5%;
+  }
+
+  .itinenary-duration {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    padding: 5%;
+  }
+
+  .itinenary-price {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    padding: 5%;
+  }
+
+  .itinenary-more-information {
+    display: flex;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    padding: 5%;
+    text-align: center;
+    background-color: tan;
+    border-radius: 9%;
+    color: red;
+    font-weight: bold;
+  }
+
+  .itinenary-hashtags {
+    text-align: center;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+
+  .itinenary-more-information a {
+    color: brown;
+  }
+
+  .homeicon-container {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .profile-picture {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 5%;
+    width: 90%;
+    border-radius: 10%;
+  }
+
+  .itinerary-image {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: grid;
+
+    grid-template-columns: 10fr 10fr 10fr 10fr 10fr;
+    grid-template-rows: 10fr 10fr 10fr 10fr 10fr;
+  }
+
+  a {
+    grid-row-start: 1;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 7;
+  }
+
+  .itinerary-image-height {
+    height: 90%;
+    width: 90%;
+    border-radius: 10%;
+  }
+
+  .itinerary-favourite {
+    margin-top: 5%;
+    margin-right: 80%;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    display: flex;
+  }
+
+  .favourite-itinerary-page {
+    font-weight: bold;
+    text-align: center;
+    font-size: 125%;
+
+  }
+
+  .favourite-itinerary-page a {
+    color: black;
+    font-size: 135%;
+  }
 }
 
-.itinerary-cards-gridmaker {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: 19% 27% 27% 27%;
+@media only screen and (max-width: 767px) {
 
-  grid-template-rows: 5fr, 5fr, 5fr, 37fr, 5fr, 7fr;
+  .available-mytineraries {
+    text-align: center;
+    color: red;
 
-  height: 100%;
-  width: 98%;
-  border-style: solid;
-  border-color: firebrick;
-  border-radius: 5%;
-  margin-bottom: 1%;
-}
+    font-size: 110%;
+    font-weight: bold;
+  }
 
-.itinerary-page-container {
-  width: 100%;
-}
+  .itinerary-cards-gridmaker {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 19% 27% 27% 27%;
 
-.itinerary-container {
-  width: 100%;
-  height: 100%;
-}
+    grid-template-rows: 5fr, 5fr, 5fr, 37fr, 5fr, 7fr;
 
-.itinerary-cards {
-  display: grid;
-  height: 100%;
-  width: 100%;
-  grid-template-rows: 85% 15%;
-}
+    height: 100%;
+    width: 98%;
+    border-style: solid;
+    border-color: firebrick;
+    border-radius: 5%;
+    margin-bottom: 1%;
+  }
 
-.itinerary-cards-container {
-  height: 100%;
-  width: 100%;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  .itinerary-page-container {
+    width: 100%;
+  }
 
-  /* overflow:scroll; */
-}
+  .itinerary-container {
+    width: 100%;
+    height: 100%;
+  }
 
-.itinenary-title {
-  font-weight: bold;
+  .itinerary-cards {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows: 85% 15%;
+  }
 
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 5;
-  padding: 5%;
-}
+  .itinerary-cards-container {
+    height: 100%;
+    width: 100%;
+    grid-row-start: 1;
+    grid-row-end: 2;
 
-.itinenary-rating {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  padding: 5%;
-}
+    /* overflow:scroll; */
+  }
 
-.itinenary-duration {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  padding: 5%;
-}
+  .itinenary-title {
+    font-weight: bold;
 
-.itinenary-price {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  padding: 5%;
-}
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    padding: 5%;
+  }
 
-.itinenary-more-information {
-  display: flex;
-  grid-row-start: 5;
-  grid-row-end: 6;
-  grid-column-start: 1;
-  grid-column-end: 5;
-  padding: 5%;
-  text-align: center;
-  background-color: tan;
-  border-radius: 9%;
-  color: red;
-  font-weight: bold;
-}
+  .itinenary-rating {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding: 5%;
+  }
 
-.itinenary-hashtags {
-  text-align: center;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: 1;
-  grid-column-end: 5;
-}
+  .itinenary-duration {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    padding: 5%;
+  }
 
-.itinenary-more-information a {
-  color: brown;
-}
+  .itinenary-price {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    padding: 5%;
+  }
 
-.homeicon-container {
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
+  .itinenary-more-information {
+    display: flex;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    padding: 5%;
+    text-align: center;
+    background-color: tan;
+    border-radius: 9%;
+    color: red;
+    font-weight: bold;
+  }
 
-.profile-picture {
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  padding: 5%;
-  width: 90%;
-  border-radius: 10%;
-}
+  .itinenary-hashtags {
+    text-align: center;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
 
-.itinerary-image {
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  grid-row-start: 4;
-  grid-row-end: 5;
-  grid-column-start: 1;
-  grid-column-end: 5;
-  display: grid;
+  .itinenary-more-information a {
+    color: brown;
+  }
 
-  grid-template-columns: 10fr 10fr 10fr 10fr 10fr;
-  grid-template-rows: 10fr 10fr 10fr 10fr 10fr;
-}
+  .homeicon-container {
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
 
-a {
-  grid-row-start: 1;
-  grid-row-end: 6;
-  grid-column-start: 1;
-  grid-column-end: 7;
-}
+  .profile-picture {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 5%;
+    width: 90%;
+    border-radius: 10%;
+  }
 
-.itinerary-image-height {
-  height: 90%;
-  width: 90%;
-  border-radius: 10%;
-}
+  .itinerary-image {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: grid;
 
-.itinerary-favourite {
-  margin-top: 5%;
-  margin-right: 80%;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 5;
-  grid-column-end: 6;
-  display: flex;
-}
+    grid-template-columns: 10fr 10fr 10fr 10fr 10fr;
+    grid-template-rows: 10fr 10fr 10fr 10fr 10fr;
+  }
 
-.favourite-itinerary-page {
-  font-weight: bold;
-  text-align: center;
-  font-size: 120%;
+  a {
+    grid-row-start: 1;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 7;
+  }
 
-}
+  .itinerary-image-height {
+    height: 90%;
+    width: 90%;
+    border-radius: 10%;
+  }
 
-.favourite-itinerary-page a {
-  color: black
+  .itinerary-favourite {
+    margin-top: 5%;
+    margin-right: 80%;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    display: flex;
+  }
+
+  .favourite-itinerary-page {
+    font-weight: bold;
+    text-align: center;
+    font-size: 120%;
+
+  }
+
+  .favourite-itinerary-page a {
+    color: black
+  }
 }

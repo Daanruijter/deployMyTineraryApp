@@ -123,30 +123,24 @@ class Login extends Component {
             <form onSubmit={this.handleSubmit}>
               <div className="form-flexer">
                 <div className="form-password">
-                  <label>
-                    <br />
-                    Password:
-                    <input
-                      name="password"
-                      placeholder="password"
-                      type="password"
-                      value={this.state.password}
-                      onChange={(e) => this.handleChange(e)}
-                    />
-                  </label>
+                  <label>Password: </label>
+                  <input
+                    name="password"
+                    placeholder="password"
+                    type="password"
+                    value={this.state.password}
+                    onChange={(e) => this.handleChange(e)}
+                  />
                 </div>
                 <div className="form-email">
-                  <label>
-                    <br />
-                    E-mail:
-                    <input
-                      name="email"
-                      placeholder="e-mail"
-                      type="text"
-                      value={this.state.email}
-                      onChange={(e) => this.handleChange(e)}
-                    />
-                  </label>
+                  <label>E-mail: </label>
+                  <input
+                    name="email"
+                    placeholder="e-mail"
+                    type="text"
+                    value={this.state.email}
+                    onChange={(e) => this.handleChange(e)}
+                  />
                 </div>
               </div>
               <br />

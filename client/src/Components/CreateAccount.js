@@ -105,7 +105,7 @@ class CreateAccount extends Component {
 
   render() {
     return (
-      <div>
+      <div className="user-registration-wrapper">
         {this.state.createaccountDivOpen ? (
           <div className="user-registration-form">
             {this.state.msg ? (
@@ -115,72 +115,59 @@ class CreateAccount extends Component {
             <form onSubmit={this.handleSubmit}>
               <div className="register-form-flexer">
                 <div>
-                  <label>
-                    First name:
-                    <input
-                      name="firstName"
-                      placeholder="first name"
-                      type="text"
-                      value={this.state.firstName}
-                      onChange={(e) => this.handleChange(e)}
-                    />
-                  </label>
+                  <label>First name:</label>
+                  <input
+                    name="firstName"
+                    placeholder="first name"
+                    type="text"
+                    value={this.state.firstName}
+                    onChange={(e) => this.handleChange(e)}
+                  />
                 </div>
                 <div>
-                  <label>
-                    <br />
-                    Last name:
-                    <input
-                      name="lastName"
-                      placeholder="last name"
-                      type="text"
-                      value={this.state.lastName}
-                      onChange={(e) => this.handleChange(e)}
-                    />
-                  </label>
+                  <label>Last name: </label>
+                  <input
+                    name="lastName"
+                    placeholder="last name"
+                    type="text"
+                    value={this.state.lastName}
+                    onChange={(e) => this.handleChange(e)}
+                  />
                 </div>
                 <div>
-                  <label>
-                    <br />
-                    Password:
-                    <input
-                      name="password"
-                      placeholder="password"
-                      type="password"
-                      value={this.state.password}
-                      onChange={(e) => this.handleChange(e)}
-                    />
-                  </label>
+                  <label>Password:</label>
+                  <input
+                    name="password"
+                    placeholder="password"
+                    type="password"
+                    value={this.state.password}
+                    onChange={(e) => this.handleChange(e)}
+                  />
                 </div>
                 <div>
-                  <label>
-                    <br />
-                    E-mail:
-                    <input
-                      name="email"
-                      placeholder="e-mail"
-                      type="text"
-                      value={this.state.email}
-                      onChange={(e) => this.handleChange(e)}
-                    />
-                  </label>
+                  <label>E-mail:</label>
+                  <input
+                    name="email"
+                    placeholder="e-mail"
+                    type="text"
+                    value={this.state.email}
+                    onChange={(e) => this.handleChange(e)}
+                  />
                 </div>
                 <div>
-                  <label>
-                    <br />
-                    Picture:
-                    <input
-                      name="picture"
-                      placeholder="picture"
-                      type="text"
-                      value={this.state.picture}
-                      onChange={(e) => this.handleChange(e)}
-                    />
-                  </label>
+                  <label>Picture: </label>
+                  <input
+                    name="picture"
+                    placeholder="picture"
+                    type="text"
+                    value={this.state.picture}
+                    onChange={(e) => this.handleChange(e)}
+                  />
                 </div>
                 <br />
 
                 <div className="submitbutton">
+                  <label></label>
                   <input
                     onClick={(e) => this.handleSubmit(e)}
                     type="submit"

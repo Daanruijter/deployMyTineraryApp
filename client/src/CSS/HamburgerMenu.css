@@ -144,20 +144,20 @@
 
   .hamburger-grid-loggedin {
     display: grid;
-    grid-template-columns: 16% 34% 50%;
+    grid-template-columns: 21% 24% 55%;
 
   }
 
   .hamburger-grid {
     display: grid;
-    grid-template-columns: 16% 34% 50%;
+    grid-template-columns: 21% 24% 55%;
     background-color: red !important;
   }
 
 
   .register-login-container {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
     display: flex;
   }
 

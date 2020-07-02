@@ -387,11 +387,13 @@ class Itinerary extends Component {
               </div>
             )}
           </div>
+
           <p className="available-mytineraries">
             Available MYtineraries for {this.props.match.params.cityName}:
           </p>
-
-          {itinerariesForSpecificCity}
+          <div className="itinerary-card-flexer">
+            {itinerariesForSpecificCity}
+          </div>
         </div>
 
         <div className="homeicon-container">

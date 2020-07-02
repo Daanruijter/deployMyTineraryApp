@@ -1,61 +1,130 @@
-.register-form-flexer {
+@media only screen and (min-width: 768px) {
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    margin-right: 19%;
 
+
+
+    .user-registration-form {
+        padding: 2%;
+
+
+    }
+
+    .register-form-flexer div {
+        display: flex;
+        justify-content: space-between;
+
+
+    }
+
+    .user-registration-form {
+        background-color: burlywood;
+
+        width: 35%;
+
+
+    }
+
+    label {
+        font-size: 125%;
+
+    }
+
+    .user-registration-form input {
+        height: 100%;
+    }
+
+
+    .submitbutton input {
+        text-align: center;
+        margin-top: 5%;
+        margin: auto;
+    }
+
+    .register-alert {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        font-size: 170%;
+        padding-bottom: 7%;
+        padding-top: 5%;
+    }
+
+    .close-register-field {
+        font-size: 150%;
+        color: red;
+        padding: 5%;
+        text-align: center;
+    }
+
+    .submitbutton {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+        ;
+    }
 }
 
-.user-registration-form {
-    padding: 2%;
+
+@media only screen and (max-width: 767px) {
+    .register-form-flexer {
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        margin-right: 19%;
+
+    }
+
+    .user-registration-form {
+        padding: 2%;
 
 
-}
+    }
 
 
 
-.user-registration-form {
-    background-color: burlywood;
-    height: 100vh;
-
-}
-
-.user-registration-form label {
-    display: inline-block;
-    width: 100%;
+    .user-registration-form {
+        background-color: burlywood;
 
 
-    text-align: center;
-}
+    }
+
+    .user-registration-form label {
+
+        width: 100%;
 
 
-.registration_submitbutton {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    ;
-}
+        text-align: center;
+    }
 
-.register-alert {
-    text-align: center;
-    color: red;
-    font-weight: bold;
-    font-size: 170%;
-    padding-bottom: 7%;
-    padding-top: 5%;
-}
 
-.close-register-field {
-    font-size: 150%;
-    color: red;
-    padding: 5%;
-    text-align: center;
-}
+    .registration_submitbutton {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
 
-.submitbutton {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    ;
+    }
+
+    .register-alert {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        font-size: 170%;
+        padding-bottom: 7%;
+        padding-top: 5%;
+    }
+
+    .close-register-field {
+        font-size: 150%;
+        color: red;
+        padding: 5%;
+        text-align: center;
+    }
+
+    .submitbutton {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+
+    }
 }

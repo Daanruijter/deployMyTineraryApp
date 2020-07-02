@@ -1,51 +1,134 @@
-.login-wrapper {
-    height: 100vh;
-    background-color: burlywood;
-    padding: 2%;
-    ;
+@media only screen and (min-width: 768px) {
+    .login-wrapper {
+        width: 35%;
+
+        background-color: burlywood;
+        padding: 2%;
+
+    }
+
+    label {
+        font-size: 125% !important;
+    }
+
+    .user-loginform {
+        background-color: burlywood;
+
+    }
+
+    .register-form-flexer input {
+        width: 63%;
+    }
+
+    .user-loginform label {
+        display: inline-block;
+
+
+
+        text-align: center;
+    }
+
+
+    .submitbutton {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+        ;
+    }
+
+    .close-login-field {
+        font-size: 150%;
+        color: red;
+        padding: 5%;
+        text-align: center;
+    }
+
+    .login-alert {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        font-size: 170%;
+        padding-bottom: 7%;
+        padding-top: 5%;
+    }
+
+    .form-flexer div {
+        display: flex;
+        justify-content: space-between;
+
+
+    }
+
+    .form-password {
+        width: 100%;
+    }
+
+    .form-flexer {
+        width: 100%;
+    }
+
+    .form-flexer input {
+        width: 69%;
+    }
 }
 
-.user-loginform {
-    background-color: burlywood;
+@media only screen and (max-width: 767px) {
+    .login-wrapper {
 
-}
+        background-color: burlywood;
+        padding: 2%;
+
+    }
+
+    .user-loginform {
+        background-color: burlywood;
+
+    }
 
 
-.user-loginform label {
-    display: inline-block;
-    width: 100%;
+    .user-loginform label {
+
+        width: 100%;
 
 
-    text-align: center;
-}
+        text-align: right;
+    }
 
 
-.submitbutton {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    ;
-}
+    .submitbutton {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+        ;
+    }
 
-.close-login-field {
-    font-size: 150%;
-    color: red;
-    padding: 5%;
-    text-align: center;
-}
+    .close-login-field {
+        font-size: 150%;
+        color: red;
+        padding: 5%;
+        text-align: center;
+    }
 
-.login-alert {
-    text-align: center;
-    color: red;
-    font-weight: bold;
-    font-size: 170%;
-    padding-bottom: 7%;
-    padding-top: 5%;
-}
+    .login-alert {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        font-size: 170%;
+        padding-bottom: 7%;
+        padding-top: 5%;
+    }
 
-.form-flexer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    margin-right: 19%;
+    /* .form-flexer {
+        display: flex;
+        flex-wrap: wrap;
+    } */
+
+    .form-flexer div {
+        display: flex;
+        margin-right: 19%;
+        align-items: center;
+
+
+
+    }
 }
