@@ -32,7 +32,7 @@
     .commentbox {
         display: grid;
         grid-template-columns: 10% 75% 15%;
-        grid-template-rows: 27% 45% 28%;
+        grid-template-rows: 27.75px auto;
         color: blue;
 
 
@@ -52,6 +52,7 @@
         text-align: center;
         grid-row-start: 1;
         grid-row-end: 2;
+        margin-top: 5%;
 
 
     }
@@ -85,6 +86,11 @@
         grid-column-end: 4;
         grid-row-start: 3;
         grid-row-end: 4;
+
+    }
+
+    .comment-horizontal-line-bottom {
+        display: none;
     }
 }
 
@@ -111,7 +117,7 @@
     .commentbox {
         display: grid;
         grid-template-columns: 10% 75% 15%;
-        grid-template-rows: 27% 45% 28%;
+        grid-template-rows: 28px auto 28%;
         color: blue;
 
 

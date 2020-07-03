@@ -163,7 +163,7 @@ class Comment extends Component {
             <div className="comment-wrapper">
               <div className="comment-flexer">{commentListsDisplay}</div>
             </div>
-            <hr></hr>
+            <hr className="comment-horizontal-line-bottom"></hr>
           </div>
         ) : (
           <div className="comment-all-wrapper">
@@ -177,9 +177,9 @@ class Comment extends Component {
             <div className="comment-wrapper">
               <div className="comment-flexer">
                 {commentListsDisplayWithoutRemoveButton}
-              </div>
+              </div>{" "}
+              <hr className="comment-horizontal-line-bottom"></hr>
             </div>
-            <hr></hr>
           </div>
         )}
       </div>

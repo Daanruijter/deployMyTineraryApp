@@ -126,7 +126,8 @@
     grid-row-start: 2;
     grid-row-end: 3;
     margin-top: 400px;
-    margin-bottom: 2%
+    margin-bottom: 2%;
+    display: none;
   }
 
   .homeIcon {
