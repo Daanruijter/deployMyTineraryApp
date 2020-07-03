@@ -146,6 +146,8 @@ class Comment extends Component {
         {" "}
         {this.props.state.auth.isAuthenticated ? (
           <div className="comment-all-wrapper">
+            <br></br>
+            Write a comment
             <form onSubmit={this.onSubmit}>
               <label>
                 <input

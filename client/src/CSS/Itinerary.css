@@ -125,6 +125,13 @@
   .homeicon-container {
     grid-row-start: 2;
     grid-row-end: 3;
+    margin-top: 400px;
+    margin-bottom: 2%
+  }
+
+  .homeIcon {
+    width: 10%;
+    margin: 0 auto;
   }
 
   .profile-picture {

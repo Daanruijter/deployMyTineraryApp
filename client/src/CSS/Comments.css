@@ -1,80 +1,168 @@
-.comment-all-wrapper {
-    width: 100%;
+@media only screen and (min-width: 768px) {
+    .comment-all-wrapper {
+        width: 100%;
+    }
+
+    .comment-all-wrapper {
+        font-size: 125%;
+    }
+
+
+    .comment-all-wrapper p {
+        font-size: 125%;
+        margin-top: 10%;
+
+    }
+
+    .comment-wrapper {
+        display: flex;
+        width: 100%;
+
+    }
+
+    .comment-flexer {
+        justify-content: flex-end;
+
+        text-align: left;
+        margin-left: 9%;
+        margin-right: 5%;
+        width: 80%;
+    }
+
+    .commentbox {
+        display: grid;
+        grid-template-columns: 10% 75% 15%;
+        grid-template-rows: 27% 45% 28%;
+        color: blue;
+
+
+        font-weight: lighter;
+
+    }
+
+    form {
+        margin-top: 5%;
+    }
+
+    .comment-username {
+        color: blue;
+        font-weight: bold;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        text-align: center;
+        grid-row-start: 1;
+        grid-row-end: 2;
+
+
+    }
+
+    .comment-login-redirecter {
+        display: inline-block;
+        color: darkblue
+    }
+
+
+    .comment-content {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+
+    }
+
+
+    .comment-delete {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+    }
+
+    .comment-horizontal-line {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
 }
 
+@media only screen and (max-width: 767px) {
+    .comment-all-wrapper {
+        width: 100%;
+    }
 
-.comment-wrapper {
-    display: flex;
-    width: 100%;
+
+    .comment-wrapper {
+        display: flex;
+        width: 100%;
+    }
+
+    .comment-flexer {
+        justify-content: flex-end;
+
+        text-align: left;
+        margin-left: 9%;
+        margin-right: 5%;
+        width: 80%;
+    }
+
+    .commentbox {
+        display: grid;
+        grid-template-columns: 10% 75% 15%;
+        grid-template-rows: 27% 45% 28%;
+        color: blue;
+
+
+        font-weight: lighter;
+
+    }
+
+    form {
+        margin-top: 5%;
+    }
+
+    .comment-username {
+        color: blue;
+        font-weight: bold;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        text-align: center;
+        grid-row-start: 1;
+        grid-row-end: 2;
+
+
+    }
+
+    .comment-login-redirecter {
+        display: inline-block;
+        color: darkblue
+    }
+
+
+    .comment-content {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+
+    }
+
+
+    .comment-delete {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+    }
+
+    .comment-horizontal-line {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
 }
-
-.comment-flexer {
-    justify-content: flex-end;
-
-    text-align: left;
-    margin-left: 9%;
-    margin-right: 5%;
-    width: 80%;
-}
-
-.commentbox {
-    display: grid;
-    grid-template-columns: 10% 75% 15%;
-    grid-template-rows: 27% 45% 28%;
-    color: blue;
-
-
-    font-weight: lighter;
-
-}
-
-form {
-    margin-top: 5%;
-}
-
-.comment-username {
-    color: blue;
-    font-weight: bold;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    text-align: center;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-
-}
-
-.comment-login-redirecter {
-    display: inline-block;
-    color: darkblue
-}
-
-
-.comment-content {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-
-
-}
-
-
-.comment-delete {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-
-}
-
-.comment-horizontal-line {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 3;
-    grid-row-end: 4;
-}
-
-
-/* grid-column-start: 1;
-grid-column-end: 2; */

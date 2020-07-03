@@ -144,7 +144,7 @@
 
   .hamburger-grid-loggedin {
     display: grid;
-    grid-template-columns: 21% 24% 55%;
+    grid-template-columns: 21% 30% 49%;
 
   }
 
@@ -171,13 +171,14 @@
     grid-column-start: 1;
     grid-column-end: 2;
     display: flex;
+    padding: 5.6px;
   }
 
   .hamburger-register {
     grid-column-start: 1;
     grid-column-end: 2;
     font-size: 120%;
-    padding: 5%;
+    padding: 5.6px;
 
   }
 
@@ -185,7 +186,7 @@
     grid-column-start: 2;
     grid-column-end: 3;
     font-size: 120%;
-    padding: 5%;
+    padding: 5.6px;
 
 
   }
@@ -194,14 +195,15 @@
     grid-column-start: 2;
     grid-column-end: 3;
     font-size: 120%;
-    padding: 5%;
+    padding: 5.6px;
+
   }
 
   .hamburger-logout {
     grid-column-start: 1;
     grid-column-end: 3;
     font-size: 120%;
-    padding: 10%;
+
 
   }
 

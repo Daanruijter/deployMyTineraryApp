@@ -361,7 +361,7 @@ class Itinerary extends Component {
                 itineraryId={itinerary._id}
               ></Activities>
             </div>
-          </div>
+          </div>{" "}
         </div>
       )
     );
