@@ -3,8 +3,6 @@ import Comment from "./Comment";
 import axios from "axios";
 import { connect } from "react-redux";
 import "../CSS/Activities.css";
-import Login from "./Login";
-import homeIcon from "../Pictures/homeIcon.png";
 
 class Activities extends Component {
   state = {
@@ -19,14 +17,15 @@ class Activities extends Component {
     let openedCarousselBeforeLogin = localStorage.getItem(
       "activityCarousselOpenBeforeLogin"
     );
-    if (
-      this.props.itineraryId.includes(openedCarousselBeforeLogin) &&
-      openedCarousselBeforeLogin !== ""
-    ) {
-      this.setCarousselOpenToTrueAfterLogin();
-      console.log(openedCarousselBeforeLogin, "opennnn");
+
+    if (this.props.itineraryId !== undefined) {
+      if (
+        this.props.itineraryId.includes(openedCarousselBeforeLogin) &&
+        openedCarousselBeforeLogin !== ""
+      ) {
+        this.setCarousselOpenToTrueAfterLogin();
+      }
     }
-    console.log("activities did mount");
   }
 
   setCarousselOpenToTrueAfterLogin = () => {
@@ -36,10 +35,10 @@ class Activities extends Component {
   getCurrentCommentsAfterUpdate = () => {
     let url = "";
     let itineraryId = this.props.itineraryId;
-    // let headers = { "Content-Type": "application/json" };
+
     let headers = {};
     let body = { itineraryId };
-    // let body = { itineraryId: itineraryId };
+
     if (process.env.NODE_ENV === "development") {
       url = "http://localhost:5000/comments/getCommentsForASpecificItinerary";
     }
@@ -53,15 +52,12 @@ class Activities extends Component {
   };
 
   getCurrentComments() {
-    console.log("getcurrentcomments");
     if (this.state.carousselOpen == !true) {
-      console.log("carousselopen");
       let url = "";
       let itineraryId = this.props.itineraryId;
-      // let headers = { "Content-Type": "application/json" };
+
       let headers = {};
       let body = { itineraryId };
-      // let body = { itineraryId: itineraryId };
 
       if (process.env.NODE_ENV === "development") {
         url = "http://localhost:5000/comments/getCommentsForASpecificItinerary";
@@ -88,9 +84,6 @@ class Activities extends Component {
       activityCarousselOpenBeforeLogin
     );
     this.setState({ carousselOpenedId: this.props.itinerary._id });
-    // if (this.props.state.auth.isAuthenticated) {
-    //   this.setState({ carousselOpen: true });
-    // }
 
     if (this.state.carousselOpen)
       localStorage.setItem("activityCarousselOpenBeforeLogin", "");
@@ -103,8 +96,7 @@ class Activities extends Component {
   updateComment = (newComment) => {
     let commentLists = this.state.commentLists;
     commentLists.push(newComment);
-    console.log("updatecomment");
-    console.log(newComment);
+
     this.setState({ commentLists: commentLists });
   };
 

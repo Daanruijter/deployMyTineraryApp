@@ -1,26 +1,14 @@
 import React, { Component } from "react";
 import FilterCities from "./FilterCities";
 import CityCard from "./CityCard";
-import Itinerary from "./Itinerary";
 import homeIcon from "../Pictures/homeIcon.png";
 import "../CSS/Cities.css";
-// import DSC_0265 from "../Pictures/DSC_0265.JPG";
 import { fetchCities } from "../store/actions/cityActions";
 import { sendUserInput } from "../store/actions/cityActions";
 import { connect } from "react-redux";
 import { sendFilteredCities } from "../store/actions/cityActions";
 
-// import '../CSS/materialize.min.css'
-
-// const cityURL = "http://localhost:5000/cities/all";
-
 class Cities extends Component {
-  // handleClick = e => {
-  //   // e.preventDefault()
-
-  //   console.log("HERE", this.props.cities);
-  // };
-
   handleChangeValue = (e) => {
     this.props.sendUserInput(e);
 
@@ -52,7 +40,6 @@ class Cities extends Component {
       });
 
       this.props.sendFilteredCities(filteredCities);
-      // return filteredCities
     }
   };
 

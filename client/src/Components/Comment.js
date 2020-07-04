@@ -94,15 +94,10 @@ class Comment extends Component {
       });
   };
 
-  // let favouritesToShow = favourites.map((favouriteItinerary, index) => (
-
   render() {
-    //   console.log(this.props.state.auth.currentUser._id);
-    //   console.log(this.props.commentListsMongo[0].writer);
-    // }
-    // if (this.state.redirect !== null) {
-    //   return <Redirect to={this.state.redirect} />;
-    // }
+    if (this.state.redirect !== null) {
+      return <Redirect to={this.state.redirect} />;
+    }
     let commentLists = this.props.commentListsMongo;
 
     let commentListsDisplay = commentLists.map((comment) => (

@@ -10,22 +10,24 @@
 
     .favourite-itinerary-cards-gridmaker {
         display: grid;
-        width: 100;
+        width: 100%;
         height: 100%;
         grid-template-columns: 19% 27% 27% 27%;
 
-        grid-template-rows: 5fr, 5fr, 5fr, 37fr, 5fr, 7fr;
+        grid-template-rows: 62.1px 95.3px 30.5px 236px 109.6px auto;
 
-        height: 100;
+        height: 100%;
         width: 98%;
         border-style: solid;
         border-color: firebrick;
         border-radius: 5%;
         margin-bottom: 1%;
+
     }
 
     .favourite-itinerary-page-container {
         width: 100%;
+
     }
 
     .favourite-itinerary-container {
@@ -33,18 +35,32 @@
         height: 100%;
     }
 
+    .favourites-card-flexer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-top: 1%;
+        padding: 1%;
+
+
+    }
+
     .favourite-itinerary-cards {
         display: grid;
         height: 100;
         width: 100%;
         grid-template-rows: 85% 15%;
+
     }
 
     .favourite-itinerary-cards-container {
-        height: 100;
-        width: 100%;
+        min-height: 547px;
+        width: 24%;
+        display: flex;
+
         grid-row-start: 1;
         grid-row-end: 2;
+        margin-bottom: 1%;
 
     }
 
@@ -93,6 +109,12 @@
         border-radius: 9%;
         color: red;
         font-weight: bold;
+
+    }
+
+    .favourite-itinenary-more-information .activities-also-nice {
+        display: none;
+
     }
 
     .favourite-itinenary-hashtags {
@@ -167,9 +189,10 @@
 
 
     .back-to-itinerary-page {
-        /* margin-top: 5%;
-        margin-bottom: 5%; */
+        margin-top: 5%;
+        font-size: 125%;
         text-align: center;
+
 
     }
 }

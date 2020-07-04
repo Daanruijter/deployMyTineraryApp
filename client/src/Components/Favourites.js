@@ -5,7 +5,6 @@ import Activities from "./Activities";
 import Login from "./Login";
 import "../CSS/Favourites.css";
 import { Link } from "react-router-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import homeIcon from "../Pictures/homeIcon.png";
 
 class Favourites extends Component {
@@ -275,6 +274,8 @@ class Favourites extends Component {
     }
 
     if (this.props.state.auth.token !== null) {
+      console.log("NOTNNULLLLLLLL");
+      console.log(this.props);
       this.props.fetchFavouritesPage();
     }
 
@@ -352,7 +353,7 @@ class Favourites extends Component {
               itinerary={favouriteItinerary}
             ></Activities>
           </div>
-        </div>
+        </div>{" "}
       </div>
     ));
     return (
@@ -364,7 +365,7 @@ class Favourites extends Component {
             >
               Go to back to the MYtineraries page
             </Link>
-            <div>{favouritesToShow}</div>
+            <div className="favourites-card-flexer">{favouritesToShow}</div>
             <div className="homeicon-container">
               <a href="/">
                 <div className="home-flexer">

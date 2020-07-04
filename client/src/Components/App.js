@@ -8,11 +8,10 @@ import CreateAccount from "./CreateAccount";
 import Login from "./Login";
 import Favourites from "./Favourites";
 import HamburgerMenu from "./HamburgerMenu";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import HamburgerMenuList from "./HamburgerMenuList";
 import Itinerary from "./Itinerary";
 import { loadUser } from "../store/actions/authActions";
-import { Router } from "react-router-dom";
 import { connect } from "react-redux";
 
 class App extends Component {

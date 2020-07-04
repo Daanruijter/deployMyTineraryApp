@@ -176,4 +176,5 @@ export default connect(mapStateToProps, {
   fetchCurrentUser,
   sendUserToken,
   clearErrors,
+  fetchFavouritesPage,
 })(Login);
