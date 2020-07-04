@@ -99,7 +99,9 @@
     display: flex;
     justify-content: center;
     background-color: white;
-    margin-top: 8%;
+    margin-top: 2%;
+    margin-left: 32%;
+    width: 30%;
 
   }
 
@@ -189,4 +191,6 @@
     margin-top: 8%;
 
   }
+
+
 }

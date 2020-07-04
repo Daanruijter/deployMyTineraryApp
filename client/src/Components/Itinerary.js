@@ -395,13 +395,11 @@ class Itinerary extends Component {
           </div>
           <div className="itinerary-back-to-cities">
             <div className="back-to-itinerary-page"></div>
-            {/* <Link to="http://www.ns.nl"> */}
-            Go back to cities
-            {/* </Link> */}
+            <Link to={"/Cities"}>Go back to cities</Link>
           </div>
         </div>
 
-        <div className="homeicon-container">
+        <div className="itinerary-homeicon-container">
           <a href="/">
             <div className="home-flexer">
               <img className="homeIcon" src={homeIcon} alt="homeIcon" />
