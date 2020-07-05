@@ -22,6 +22,7 @@
         border-color: firebrick;
         border-radius: 5%;
         margin-bottom: 1%;
+        font-size: 120%;
 
     }
 
@@ -71,7 +72,8 @@
         grid-row-end: 2;
         grid-column-start: 2;
         grid-column-end: 5;
-        padding: 5%;
+        padding: 5% 5% 0% 0%;
+        text-align: left;
     }
 
     .favourite-itinenary-rating {
@@ -79,7 +81,8 @@
         grid-row-end: 3;
         grid-column-start: 2;
         grid-column-end: 3;
-        padding: 5%;
+        padding: 0% 5% 0% 0%;
+        text-align: left;
     }
 
     .favourite-itinenary-duration {
@@ -87,7 +90,8 @@
         grid-row-end: 3;
         grid-column-start: 3;
         grid-column-end: 4;
-        padding: 5%;
+        padding: 0% 5% 0% 0%;
+        text-align: left;
     }
 
     .favourite-itinenary-price {
@@ -95,7 +99,8 @@
         grid-row-end: 3;
         grid-column-start: 4;
         grid-column-end: 5;
-        padding: 5%;
+        padding: 0% 5% 0% 0%;
+        text-align: left;
     }
 
     .favourite-itinenary-more-information {
@@ -132,8 +137,20 @@
     .favourite-homeicon-container {
         grid-row-start: 2;
         grid-row-end: 3;
+        margin-bottom: 50%;
 
+    }
 
+    .favourite-homeIcon {
+        width: 5%;
+        margin-left: 20%;
+    }
+
+    .favourite-home-flexer {
+        margin-top: 2%;
+        text-align: center;
+        width: 50%;
+        margin-left: 20%;
     }
 
     .favourite-profile-picture {
@@ -184,15 +201,17 @@
         color: black;
         font-weight: bold;
 
-        font-size: 120%;
+        font-size: 135%;
 
 
     }
 
 
+
+
     .back-to-itinerary-page {
         margin-top: 5%;
-        font-size: 125%;
+
         text-align: center;
 
 
@@ -256,7 +275,7 @@
         grid-row-end: 2;
         grid-column-start: 2;
         grid-column-end: 5;
-        padding: 5%;
+        padding: 5% 5% 0% 0%;
     }
 
     .favourite-itinenary-rating {
@@ -264,7 +283,7 @@
         grid-row-end: 3;
         grid-column-start: 2;
         grid-column-end: 3;
-        padding: 5%;
+        padding: 5% 5% 5% 0%;
     }
 
     .favourite-itinenary-duration {
@@ -272,7 +291,7 @@
         grid-row-end: 3;
         grid-column-start: 3;
         grid-column-end: 4;
-        padding: 5%;
+        padding: 5% 5% 5% 0%;
     }
 
     .favourite-itinenary-price {
@@ -280,7 +299,7 @@
         grid-row-end: 3;
         grid-column-start: 4;
         grid-column-end: 5;
-        padding: 5%;
+        padding: 5% 5% 5% 0%;
     }
 
     .favourite-itinenary-more-information {
@@ -311,6 +330,17 @@
     .favourite-homeicon-container {
         grid-row-start: 2;
         grid-row-end: 3;
+    }
+
+    .favourite-homeIcon {
+        width: 10%;
+
+    }
+
+    .favourite-home-flexer {
+        display: flex;
+        justify-content: center;
+        margin-top: 8%;
     }
 
     .favourite-profile-picture {

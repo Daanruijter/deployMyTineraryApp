@@ -27,7 +27,7 @@
 
     .activities-close {
         color: red;
-        font-size: 200%;
+        font-size: 150%;
         margin-bottom: 5%;
     }
 
@@ -37,11 +37,15 @@
 
         background-color: red;
         width: 125px;
-        height: 150px;
-        padding-top: 2%;
+        height: 100%;
+        font-size: 85%;
         margin: 2%;
 
 
+    }
+
+    form input {
+        width: 100%;
     }
 
     .activities-title {
@@ -94,7 +98,7 @@
         border-radius: 10%;
         font-size: 150%;
         height: 5%;
-
+        padding-bottom: 3%;
     }
 
 
@@ -118,7 +122,9 @@
         width: 100px;
         height: 100%;
         padding-top: 2%;
-        margin: 2%;
+        margin: 1%;
+        border-radius: 10%;
+        font-size: 85%;
 
 
     }
@@ -143,21 +149,20 @@
         display: flex;
         overflow: scroll;
         height: 100px;
-        width: 100%;
+        width: 97%;
         flex-direction: column;
         justify-content: flex-end;
         flex-wrap: wrap;
+
+        padding: 5% 0% 2% 0%;
 
 
     }
 
     .activities-image img {
         width: 70%;
-        height: 100%;
+        height: 45px;
     }
 
-    /* .activities-image{
-    display:inline;
-} */
 
 }

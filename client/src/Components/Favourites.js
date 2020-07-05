@@ -324,14 +324,15 @@ class Favourites extends Component {
             {favouriteItinerary.title}
           </div>
           <div className="favourite-itinenary-rating">
-            <b>Likes</b>: {favouriteItinerary.rating}
+            <b>Likes</b>: <br /> {favouriteItinerary.rating}
           </div>
           <div className="favourite-itinenary-duration">
-            <b>Duration</b>: {favouriteItinerary.duration}
+            <b>Duration</b>: <br />
+            {favouriteItinerary.duration}
           </div>
 
           <div className="favourite-itinenary-price">
-            <b>Price</b>: {favouriteItinerary.price}
+            <b>Price</b>: <br /> {favouriteItinerary.price}
           </div>
           <div className="favourite-itinenary-hashtags">
             {favouriteItinerary.hashtags}
@@ -359,17 +360,23 @@ class Favourites extends Component {
     return (
       <div>
         {this.props.state.auth.isAuthenticated ? (
-          <div className="back-to-itinerary-page">
-            <Link
-              to={`/itinerary/${this.state.cityNameId._id}/${this.props.match.params.cityName}`}
-            >
-              Go to back to the MYtineraries page
-            </Link>
+          <div>
+            <div className="back-to-itinerary-page">
+              <Link
+                to={`/itinerary/${this.state.cityNameId._id}/${this.props.match.params.cityName}`}
+              >
+                Go to back to the MYtineraries page
+              </Link>
+            </div>
             <div className="favourites-card-flexer">{favouritesToShow}</div>
-            <div className="homeicon-container">
+            <div className="favourite-homeicon-container">
               <a href="/">
-                <div className="home-flexer">
-                  <img className="homeIcon" src={homeIcon} alt="homeIcon" />
+                <div className="favourite-home-flexer">
+                  <img
+                    className="favourite-homeIcon"
+                    src={homeIcon}
+                    alt="homeIcon"
+                  />
                 </div>
               </a>
             </div>{" "}
@@ -377,10 +384,14 @@ class Favourites extends Component {
         ) : (
           <div>
             <Login></Login>
-            <div className="homeicon-container">
+            <div className="favourite-homeicon-container">
               <a href="/">
-                <div className="home-flexer">
-                  <img className="homeIcon" src={homeIcon} alt="homeIcon" />
+                <div className="favourite-home-flexer">
+                  <img
+                    className="favourite-homeIcon"
+                    src={homeIcon}
+                    alt="homeIcon"
+                  />
                 </div>
               </a>
             </div>

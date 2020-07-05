@@ -20,7 +20,7 @@
 
 @media only screen and (min-width: 767px) {
     .hamburger-menu-list-open a {
-        font-size: 350%;
+        font-size: 250%;
 
         text-decoration: none;
         color: white;

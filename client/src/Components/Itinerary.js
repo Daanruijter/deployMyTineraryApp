@@ -318,14 +318,15 @@ class Itinerary extends Component {
 
             <div className="itinenary-title">{itinerary.title}</div>
             <div className="itinenary-rating">
-              <b>Likes</b>: {itinerary.rating}
+              <b>Likes</b>: <br />
+              {itinerary.rating}
             </div>
             <div className="itinenary-duration">
-              <b>Duration</b>: {itinerary.duration}
+              <b>Duration</b>:<br /> {itinerary.duration}
             </div>
 
             <div className="itinenary-price">
-              <b>Price</b>: {itinerary.price}
+              <b>Price</b>:<br /> {itinerary.price}
             </div>
             <div className="itinenary-hashtags">{itinerary.hashtags}</div>
 
@@ -371,19 +372,18 @@ class Itinerary extends Component {
         <div className="itinerary-container">
           <div
             onClick={this.triggerFetchFavouritePage}
-            className="favourite-itinerary-page"
+            className="itinerary-favourite-itinerary-page"
           >
             {this.props.state.auth.isAuthenticated ? (
-              <div className="back-to-itinerary-page">
+              <div className="to-itinerary-page">
                 <Link to={`/favourites/${this.props.match.params.cityName}`}>
                   Go to your favourite MYtineraries page
                 </Link>
               </div>
             ) : (
               <div onClick={(e) => this.redirecter(e)}>
-                <Link to={"/Login"}>
-                  To see your favourites page please login
-                </Link>
+                To see your favourites page please{" "}
+                <Link to={"/Login"}>login</Link>
               </div>
             )}
           </div>
@@ -393,13 +393,13 @@ class Itinerary extends Component {
           <div className="itinerary-card-flexer">
             {itinerariesForSpecificCity}
           </div>
-          <div className="itinerary-back-to-cities">
-            <div className="back-to-itinerary-page"></div>
-            <Link to={"/Cities"}>Go back to cities</Link>
-          </div>
         </div>
 
         <div className="itinerary-homeicon-container">
+          {" "}
+          <div className="itinerary-back-to-cities">
+            <Link to={"/Cities"}>Go back to cities</Link>
+          </div>
           <a href="/">
             <div className="home-flexer">
               <img className="homeIcon" src={homeIcon} alt="homeIcon" />

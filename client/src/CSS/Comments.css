@@ -4,12 +4,12 @@
     }
 
     .comment-all-wrapper {
-        font-size: 125%;
+        font-size: 100%;
     }
 
 
     .comment-all-wrapper p {
-        font-size: 125%;
+        font-size: 100%;
         margin-top: 10%;
 
     }
@@ -32,7 +32,7 @@
     .commentbox {
         display: grid;
         grid-template-columns: 10% 75% 15%;
-        grid-template-rows: 27.75px auto;
+        grid-template-rows: 50px auto;
         color: blue;
 
 
@@ -53,6 +53,7 @@
         grid-row-start: 1;
         grid-row-end: 2;
         margin-top: 5%;
+        font-size: 80%;
 
 
     }
@@ -68,6 +69,7 @@
         grid-column-end: 3;
         grid-row-start: 2;
         grid-row-end: 3;
+        font-size: 80%;
 
 
     }
