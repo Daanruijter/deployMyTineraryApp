@@ -44,6 +44,8 @@
         border-radius: 10% !important;
         width: 10%;
         background-color: aqua;
+        width: 90%;
+        margin-left: 5%;
     }
 
 }
